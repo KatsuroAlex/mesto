@@ -13,7 +13,6 @@ body {
   max-width: 1280px;
   box-sizing: border-box;
   margin: auto;
-  /* padding: 0 200px 0 200px; */
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
@@ -30,22 +29,87 @@ body {
   flex-direction: column;
 }
 
+@media screen and (max-width: 1050px) {
+  .header {
+    margin: 45px 100px 40px 100px;
+  }
+}
+
+@media screen and (max-width: 845px) {
+  .header {
+    margin: 45px 19px 40px 19px;
+  }
+}
+
+@media screen and (max-width: 619px) {
+  .header {
+    max-width: 619px;
+    margin: 28px 19px 42px 19px;
+  }
+}
+
+@media screen and (max-width: 408px) {
+  .header {
+    max-width: 408px;
+    margin: 28px 19px 41px 19px;
+  }
+}
+
+
 .header__logo {
   max-width: 142px;
   min-height: 33px;
 }
 
+@media screen and (max-width: 619px) {
+  .header__logo {
+    padding-left: 8px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header__logo {
+    max-width: 103.74px;
+    min-height: 24.4px;
+  }
+}
+
+
 .header__line {
-  border: 1px solid #545454;
+  border-bottom: 1px solid #545454;
   opacity: 0.7;
   margin-top: 41px;
 }
+
+
+@media screen and (max-width: 320px) {
+  .header__line {
+    margin-top: 31.6px;
+
+  }
+}
+
+
+
 
 .main {
   margin: 0 200px 50px 200px;
 
     /* сделать кальком */
 }
+
+@media screen and (max-width: 1050px) {
+  .main {
+    margin: 0 100px 50px 100px;
+  }
+}
+
+@media screen and (max-width: 845px) {
+  .main {
+    margin: 0 19px 50px 19px;
+  }
+}
+
 
 .profile {
   max-width: 880px;
@@ -55,12 +119,49 @@ body {
   margin-bottom: 50px;
 }
 
+@media screen and (max-width: 619px) {
+  .profile {
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 36px;
+
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile {
+    margin-bottom: 37px;
+  }
+}
+
+
+
+
+
 .profile__avatar {
+  background: url('./blocks/images/Avatar.jpg') no-repeat center top;
   width: 120px;
   height: 120px;
   border-radius: 65px;
-  object-fit: cover;
+  
 }
+
+@media screen and (max-width: 619px) {
+  .profile__avatar {
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 408px) {
+  .profile__avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 65px;
+  }
+}
+
+
+
 
 .profile__info {
   max-width: 336px;
@@ -70,6 +171,21 @@ body {
   margin-left: 30px;
 }
 
+@media screen and (max-width: 619px) {
+  .profile__info {
+    margin: 26px auto 36px auto;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile__info {
+    margin: 6px auto 33px 47px;
+  }
+}
+
+
+
+
 .profile__title {
   font-family: 'Inter';
   font-style: normal;
@@ -78,7 +194,24 @@ body {
   line-height: 1.14;
   color: #FFFFFF;
   margin: 20px 0 0 0;
+
 }
+
+@media screen and (max-width: 380px) {
+  .profile__title {
+    font-size: 27px;
+    line-height: 1.14;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile__title {
+    font-size: 27px;
+    line-height: 1.21;
+  }
+}
+
+
 
 .profile__subtitle {
   font-family: 'Inter';
@@ -90,11 +223,47 @@ body {
   margin: 8px auto 0 0;
 }
 
-.profile__rectangle {
+@media screen and (max-width: 380px) {
+  .profile__subtitle {
+    font-size: 14px;
+    line-height: 1.14;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile__subtitle {
+    margin: 8px auto 0 15px;
+  }
+}
+
+
+
+
+.profile__rectangle-button {
+  background: url('./blocks/images/Edit_Button.svg') no-repeat center center;
+  border: 1px solid #FFFFFF;
   width: 24px;
   height: 24px;
-  border-color: #FFFFFF;
+  opacity: 1;
+  transition: 0.2s linear;
 }
+
+.profile__rectangle-button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 320px) {
+  .profile__rectangle-button {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+
+
+
+
+
 
 .profile__add-button {
   width: 150px;
@@ -103,12 +272,55 @@ body {
   justify-items: end;
   margin-left: auto;
   margin-right: 0;
+  border-radius: 2px;
+  opacity: 1;
+  transition: 0.2s linear;
+  background-color: #000000;
+  color: #FFFFFF;
+  font-size: 37px;
+  border: 2px solid #FFFFFF;
+  margin-bottom: 4px;
+
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 619px) {
+  .profile__add-button {
+    margin: 0;
+    width: 282px;
+    padding: 0 19px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile__add-button {
+    font-size: 33px;
+    padding: 0 0 4px 0;
+  }
+}
+
+
+@media screen and (max-width: 320px) {
+  .profile__img {
+    width: 250px;
+    height: 50px;
+  }
 }
 
 .elements {
   margin: 0 auto 71px auto;
 
 }
+
+@media screen and (max-width: 320px) {
+  .elements {
+    margin: 0 auto 49px auto;
+  }
+}
+
 
 .elements__list {
   list-style: none;
@@ -120,6 +332,38 @@ body {
   margin: 0;
 }
 
+@media screen and (max-width: 619px) {
+  .elements__list {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px 17px;
+  }
+}
+
+@media screen and (max-width: 408px) {
+  .elements__list {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 20px 0;
+    margin: 0 auto;
+    /* padding: 0 30px; */
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .elements__list {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 20px 0;
+    margin: 0 auto;
+    padding: 0 0;
+  }
+}
+
+
+
+
+
 .elements__element {
   max-width: 282px;
   display: flex;
@@ -129,6 +373,14 @@ body {
   border-radius: 10px;
   overflow: hidden;
 }
+
+@media screen and (max-width: 320px) {
+  .elements__element {
+    min-height: 361px;
+
+  }
+}
+
 
 .elements__photo {
   max-width: 282px;
@@ -155,19 +407,69 @@ body {
   font-size: 24px;
   line-height: 1.21;
   color: #000000;
+
 }
+
+@media screen and (max-width: 1128px) {
+  .elements__text {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 645px) {
+  .elements__text {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .elements__text {
+    font-size: 24px;
+  }
+}
+
+
 
 .elements__like {
   max-width: 22px;
   min-height: 19px;
+  padding-top: 5px;
+  opacity: 1;
+  transition: 2s linear;
 }
 
+.elements__like:hover {
+  opacity: 0.6;
+}
 
 .footer {
   max-width: 318px;
   min-height: 18px;
   margin: 0 auto 60px 200px;
 }
+
+@media screen and (max-width: 1050px) {
+  .footer {
+    margin: 0 auto 60px 100px;
+  }
+}
+
+@media screen and (max-width: 845px) {
+  .footer {
+    margin: 0 auto 60px 19px;
+  }
+}
+
+@media screen and (max-width: 408px) {
+  .footer {
+    margin: 0 auto 60px 19px;
+    max-width: 320px;
+  }
+}
+
+
+
+
 
 .footer__text {
   font-family: 'Inter';
@@ -176,4 +478,11 @@ body {
   font-size: 18px;
   line-height: 1;
   color: #545454;
+}
+
+@media screen and (max-width: 320px) {
+  .footer__text {
+    font-size: 14px;
+    line-height: 1.21;
+  }
 }
