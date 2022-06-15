@@ -1,58 +1,41 @@
-const profileRectangleButton = document.querySelector('.profile__rectangle-button');
+let editButton = document.querySelector('.profile__rectangle-button');
 const popup = document.querySelector('.popup');
 const popupCloseButton = document.querySelector('.popup__close');
-let popupContainer = document.querySelector('.popup__container');
-let nameInput = document.querySelector('.popup__name');
-let jobInput = document.querySelector('.popup__info');
-
+let formElement = document.querySelector('.popup__container');
+let nameInput = formElement.querySelector('.popup__name');
+let jobInput = formElement.querySelector('.popup__info');
+let popupSubmitButton = document.querySelector('.popup__submit-button')
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
 
 
-
-
-
-profileRectangleButton.addEventListener('click', openPopup);
-popupCloseButton.addEventListener('click', closePopup);
-
-
-
-
-// ОТКРЫТЬ ЗАКРЫТЬ ПОПАП
 function openPopup(event) {
     popup.classList.add('popup_opened');
     nameInput.value = profileTitle.textContent;
     jobInput.value = profileSubtitle.textContent;
 }
+editButton.addEventListener('click', openPopup);
+
 
 function closePopup(event) {
     popup.classList.remove('popup_opened');
 }
+popupCloseButton.addEventListener('click', closePopup);
 
 
-
-// Закрыть ПОПАП на экран и крестик
-popup.addEventListener('click', (event) => {
-    if(!event.defaultPrevented) {
-        closePopup();
-    }
-})
-
-popupContainer.addEventListener('click', (event) => {
-    event.preventDefault();
-})
-
-
-function formSubmitHandler (event) {
-    event.preventDefault();
-    profileTitle.textContent = `${nameInput.value}`;
-    profileSubtitle.textContent = `${jobInput.value}`;
+function formSubmitHandler (evt) {
+    evt.preventDefault();
+    profileTitle.textContent = nameInput.value
+    profileSubtitle.textContent = jobInput.value
     closePopup();
-
 }
-
-
-
+// console.log(formSubmitHandler())
 
 
 formElement.addEventListener('submit', formSubmitHandler);
+
+
+
+
+
+

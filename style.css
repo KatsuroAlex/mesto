@@ -3,7 +3,6 @@
 
 /* ДОБАВИТЬ АЛЬТ ШРИФТЫ */
 /* images перенести в корень */
-/* дописать английский язык */
 /* оформить файл ридми */
 /* сделать курсор при наведении на кнопку*/
 /* сделать сердечко */
@@ -56,7 +55,7 @@ body {
 @media screen and (max-width: 408px) {
   .header {
     max-width: 408px;
-    margin: 28px 19px 41px 19px;
+    margin: 28px 0 41px 0;
   }
 }
 
@@ -68,7 +67,7 @@ body {
 
 @media screen and (max-width: 619px) {
   .header__logo {
-    padding-left: 8px;
+    padding-left: 27px;
   }
 }
 
@@ -121,7 +120,7 @@ body {
   min-height: 120px;
   display: flex;
   flex-direction: row;
-  margin-bottom: 50px;
+  margin-bottom: 46px;
 }
 
 @media screen and (max-width: 619px) {
@@ -135,7 +134,7 @@ body {
 
 @media screen and (max-width: 320px) {
   .profile {
-    margin-bottom: 37px;
+    margin-bottom: 36px;
   }
 }
 
@@ -173,7 +172,7 @@ body {
   min-height: 73px;
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
+  margin-left: 27px;
 }
 
 @media screen and (max-width: 619px) {
@@ -184,10 +183,17 @@ body {
 
 @media screen and (max-width: 320px) {
   .profile__info {
-    margin: 6px auto 33px 47px;
+    margin: 8px auto 33px 47px;
   }
 }
 
+
+.profile__list {
+  
+  display: flex;
+  flex-direction: row;
+  
+}
 
 
 
@@ -198,8 +204,8 @@ body {
   font-size: 42px;
   line-height: 1.14;
   color: #FFFFFF;
-  margin: 20px 0 0 0;
-
+  margin: 18px 22px 0 0;
+  max-width: 294px;
 }
 
 @media screen and (max-width: 380px) {
@@ -213,6 +219,7 @@ body {
   .profile__title {
     font-size: 27px;
     line-height: 1.21;
+    margin: 18px 13px 0 0;
   }
 }
 
@@ -226,6 +233,7 @@ body {
   line-height: 1.21;
   color: #FFFFFF;
   margin: 8px auto 0 0;
+  padding: 0 0 0 0;
 }
 
 @media screen and (max-width: 380px) {
@@ -237,7 +245,7 @@ body {
 
 @media screen and (max-width: 320px) {
   .profile__subtitle {
-    margin: 8px auto 0 15px;
+    margin: 9px auto 0 15px;
   }
 }
 
@@ -251,6 +259,7 @@ body {
   height: 24px;
   opacity: 1;
   transition: 0.2s linear;
+  margin-top: 32px;
 }
 
 .profile__rectangle-button:hover {
@@ -261,6 +270,7 @@ body {
   .profile__rectangle-button {
     width: 18px;
     height: 18px;
+    margin-top: 26px;
   }
 }
 
@@ -284,7 +294,7 @@ body {
   color: #FFFFFF;
   font-size: 37px;
   border: 2px solid #FFFFFF;
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 
 }
 
@@ -400,9 +410,17 @@ body {
   flex-direction: row;
   position: relative;
   justify-content: space-between;
-  padding: 25px 21px 24px 21px;
+  padding: 25px 18px 24px 21px;
   margin-top: 0;
 }
+
+@media screen and (max-width: 320px) {
+  .elements__title {
+    padding: 25px 20px 24px 21px;
+  }
+}
+
+
 
 .elements__text {
   margin: 0;
@@ -446,6 +464,7 @@ body {
   padding-top: 5px;
   opacity: 1;
   transition: 2s linear;
+
 }
 
 .elements__like:hover {
@@ -620,3 +639,5 @@ body {
 .popup__submit-button:hover {
   opacity: 0.8;
 }
+
+

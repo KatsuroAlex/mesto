@@ -22,10 +22,13 @@
       <section class="profile">
         <div class="profile__avatar"></div>
         <div class="profile__info">
-          <h1 class="profile__title">Жак-Ив Кусто&nbsp;&nbsp;<button class="profile__rectangle-button"></button></h1>
+          <div class="profile__list">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button class="profile__rectangle-button" type="submit"></button>
+          </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button class="profile__add-button">+</button>
+        <button class="profile__add-button" type="button">+</button>
       </section>
 
 
@@ -88,24 +91,25 @@
     </main>
 
     <footer class="footer">
-      <p class="footer__text">© 2020 Mesto Russia</p>
+      <p class="footer__text">&#169; 2022 Mesto Russia</p>
     </footer>
 
   </div>
 
   <div class="popup">
-    <div class="popup__container">
-      <button class="popup__close">
-        <img src="./blocks/images/Close_Icon.svg" alt="close" width="100%" height="100%">
+    <form class="popup__container">
+      <button class="popup__close" type="button">
+        <img src="./blocks/images/Close_Icon.svg" alt="close">
       </button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <input type="text" placeholder="" class="popup__name">
-      <input type="text" placeholder="" class="popup__info">
-      <button class="popup__submit-button">Сохранить</button>
-    </div>
+      <input type="text" value="" placeholder="Имя" class="popup__name">
+      <input type="text" value="" placeholder="Информация" class="popup__info">
+      <button class="popup__submit-button" type="submit">Сохранить</button>
+    </form>
   </div>
 
   <script src="./index.js"></script>
 </body>
 
 </html>
+
