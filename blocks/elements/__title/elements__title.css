@@ -1,0 +1,15 @@
+.elements__title {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-between;
+    padding: 25px 20px 24px 21px;
+    margin-top: 0;
+}
+
+@media screen and (max-width: 320px) {
+    .elements__title {
+        padding: 25px 20px 24px 21px;
+    }
+}

@@ -1,0 +1,19 @@
+.popup__close {
+    border: none;
+    background-color: transparent;
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    justify-content: flex-end;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    opacity: 1;
+    transition: 0.5s linear;
+}
+
+
+.popup__close:hover {
+    opacity: 0.8;
+}
