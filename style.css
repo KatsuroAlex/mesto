@@ -1,9 +1,6 @@
 @import url('./vendor/normalize.css');
 @import url('./vendor/fonts/fonts.css');
 
-/* ДОБАВИТЬ АЛЬТ ШРИФТЫ */
-/* images перенести в корень */
-/* оформить файл ридми */
 
 body {
   background-color: #000000;
@@ -96,8 +93,6 @@ body {
 
 .main {
   margin: 0 200px 50px 200px;
-
-    /* сделать кальком */
 }
 
 @media screen and (max-width: 1050px) {
@@ -112,7 +107,6 @@ body {
   }
 }
 
-
 .profile {
   max-width: 880px;
   min-height: 120px;
@@ -126,7 +120,6 @@ body {
     flex-direction: column;
     justify-content: center;
     margin-bottom: 36px;
-
   }
 }
 
@@ -137,11 +130,8 @@ body {
 }
 
 
-
-
-
 .profile__avatar {
-  background: url('./blocks/images/Avatar.jpg') no-repeat center top;
+  background: url('./images/Avatar.jpg') no-repeat center top;
   width: 120px;
   height: 120px;
   border-radius: 65px;
@@ -161,8 +151,6 @@ body {
     border-radius: 65px;
   }
 }
-
-
 
 
 .profile__info {
@@ -187,16 +175,12 @@ body {
 
 
 .profile__list {
-  
   display: flex;
   flex-direction: row;
-  
 }
 
-
-
 .profile__title {
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif; 
   font-style: normal;
   font-weight: 500;
   font-size: 42px;
@@ -221,10 +205,8 @@ body {
   }
 }
 
-
-
 .profile__subtitle {
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif; 
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -248,10 +230,8 @@ body {
 }
 
 
-
-
 .profile__rectangle-button {
-  background: url('./blocks/images/Edit_Button.svg') no-repeat center center;
+  background: url('./images/Edit_Button.svg') no-repeat center center;
   border: 1px solid #FFFFFF;
   width: 24px;
   height: 24px;
@@ -272,10 +252,6 @@ body {
     margin-top: 26px;
   }
 }
-
-
-
-
 
 
 
@@ -397,7 +373,6 @@ body {
 
 .elements__photo {
   max-width: 282px;
-  width: 100%;
   object-fit: cover;
   box-sizing: border-box;
 }
@@ -422,7 +397,7 @@ body {
 
 .elements__text {
   margin: 0;
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif; 
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
@@ -465,7 +440,7 @@ body {
   cursor: pointer;
   align-self: center;
   background-color: transparent;
-  background: url('./blocks/images/Like.svg') center no-repeat;
+  background: url('./images/Like.svg') center no-repeat;
   padding: 0;
   border: none;
   color: #000000;
@@ -478,7 +453,7 @@ body {
 }
 
 .elements__like_active {
-  background: url('./blocks/images/Like_active.svg') center no-repeat;
+  background: url('./images/Like_active.svg') center no-repeat;
 }
 
 
@@ -512,7 +487,7 @@ body {
 
 
 .footer__text {
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif; 
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -588,7 +563,7 @@ body {
 
 
 .popup__title {
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif; 
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
@@ -606,7 +581,7 @@ body {
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif; 
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -623,7 +598,7 @@ body {
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif; 
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -633,7 +608,7 @@ body {
 
 .popup__submit-button {
   background-color: #000000;
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif; 
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
