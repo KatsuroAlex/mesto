@@ -1,14 +1,13 @@
 let editButton = document.querySelector('.profile__rectangle-button')
 const popup = document.querySelector('.popup')
 const popupCloseButton = document.querySelector('.popup__close')
-let formElement = document.querySelector('.popup__container')
-let nameInput = formElement.querySelector('.popup__name')
-let jobInput = formElement.querySelector('.popup__info')
+const form = document.forms.form
+let nameInput = form.elements.name
+let jobInput = form.elements.info
 let popupSubmitButton = document.querySelector('.popup__submit-button')
 let profileTitle = document.querySelector('.profile__title')
 let profileSubtitle = document.querySelector('.profile__subtitle')
 let likeButton = document.querySelector('.elements__like')
-
 
 
 function openPopup(event) {
@@ -16,13 +15,11 @@ function openPopup(event) {
     nameInput.value = profileTitle.textContent
     jobInput.value = profileSubtitle.textContent
 }
-editButton.addEventListener('click', openPopup)
 
 
 function closePopup(event) {
     popup.classList.remove('popup_opened')
 }
-popupCloseButton.addEventListener('click', closePopup)
 
 
 function formSubmitHandler (evt) {
@@ -31,14 +28,9 @@ function formSubmitHandler (evt) {
     profileSubtitle.textContent = jobInput.value
     closePopup()
 }
-formElement.addEventListener('submit', formSubmitHandler)
 
 
-function likeActive(event) {
-    likeButton.classList.toggle('elements__like_active')
-}
-
-
-likeButton.addEventListener('click', likeActive)
-
+editButton.addEventListener('click', openPopup)
+popupCloseButton.addEventListener('click', closePopup)
+form.addEventListener('submit', formSubmitHandler)
 

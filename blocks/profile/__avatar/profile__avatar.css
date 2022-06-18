@@ -1,9 +1,10 @@
 .profile__avatar {
-    background: url('../../../images/Avatar.jpg') no-repeat center top;
-    width: 120px;
+    max-width: 120px;
     height: 120px;
-    border-radius: 65px;
-
+    object-fit: cover;
+    border-radius: 50%;
+    object-position: 45% 50%;
+    box-sizing: border-box;
 }
 
 @media screen and (max-width: 619px) {

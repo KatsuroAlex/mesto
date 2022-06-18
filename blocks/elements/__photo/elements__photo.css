@@ -3,3 +3,9 @@
     object-fit: cover;
     box-sizing: border-box;
 }
+
+@media screen and (max-width: 408px) {
+    .elements__photo {
+        max-width: 370px;
+    }
+}
