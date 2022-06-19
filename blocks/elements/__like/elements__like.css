@@ -1,5 +1,5 @@
 .elements__like {
-    width: 22px;
+    width: 34px;
     height: 19px;
     opacity: 1;
     transition: 0.5s linear;
@@ -16,3 +16,5 @@
 .elements__like:hover {
     opacity: 0.5;
 }
+
+

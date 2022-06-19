@@ -1,9 +1,9 @@
 let editButton = document.querySelector('.profile__rectangle-button')
 const popup = document.querySelector('.popup')
 const popupCloseButton = document.querySelector('.popup__close')
-const form = document.forms.form
-let nameInput = form.elements.name
-let jobInput = form.elements.info
+let formElement = document.querySelector('.popup__form') 
+let nameInput = formElement.querySelector('.popup__input_field_name') 
+let jobInput = formElement.querySelector('.popup__input_field_info') 
 let popupSubmitButton = document.querySelector('.popup__submit-button')
 let profileTitle = document.querySelector('.profile__title')
 let profileSubtitle = document.querySelector('.profile__subtitle')
@@ -32,5 +32,7 @@ function formSubmitHandler (evt) {
 
 editButton.addEventListener('click', openPopup)
 popupCloseButton.addEventListener('click', closePopup)
-form.addEventListener('submit', formSubmitHandler)
+formElement.addEventListener('submit', formSubmitHandler)
+
+
 

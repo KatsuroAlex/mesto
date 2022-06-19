@@ -1,4 +1,4 @@
-.popup__text {
+.popup__input {
     padding: 0;
     max-width: 358px;
     width: 100%;
@@ -14,10 +14,20 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 470px) {
+    .popup__input {
+        margin: 0 0 27px 0;
+    }
+}
+
+.popup__input:nth-child(n+2) { 
+    margin: 0 0 48px 0;
+} 
 
 @media screen and (max-width: 470px) {
-    .popup__text {
-        margin: 0 0 27px 0;
+    .popup__input:nth-child(n+2) {
+        margin: 0 0 48px 0;
 
     }
 }
+
