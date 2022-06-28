@@ -69,20 +69,174 @@
 
 
 
+.popup-cards {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.popup-cards_opened {
+    display: flex;
+}
+
+.popup-cards__container {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 34px 36px 37px 36px;
+    margin: auto;
+    border-radius: 10px;
+    max-width: 356px;
+    width: 100%;
+    position: relative;
+}
+
+
+@media screen and (max-width: 470px) {
+    .popup-cards__container {
+        max-width: 237px;
+        padding: 25px 22px 25px 22px;
+
+    }
+}
+
+
+
+
+.popup-cards__close {
+    background: url('../../../images/Close_Icon.svg') no-repeat center center;
+    box-sizing: border-box;
+    border: none;
+    background-color: transparent;
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    justify-content: flex-end;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    opacity: 1;
+    transition: 0.5s linear;
+    cursor: pointer;
+}
+
+
+.popup-cards__close:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 470px) {
+    .popup-cards__close {
+        width: 20px;
+        height: 20px;
+        right: -1px;
+        top: -37px;
+    }
+
+}
 
 
 
 
 
+.popup-cards__title {
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.21;
+    color: #000000;
+    margin: 0 0 42px 0;
+    width: 100%;
+}
+
+@media screen and (max-width: 470px) {
+    .popup-cards__title {
+        font-size: 18px;
+        margin: 0 0 68px 0;
+    }
+}
 
 
+.popup-cards__form {
+    display: flex;
+    flex-direction: column;
+    max-width: 358px;
+    width: 100%;
+}
 
 
+.popup-cards__input {
+    padding: 0;
+    max-width: 358px;
+    width: 100%;
+    margin: 0 0 25px 0;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 2.21;
+    color: #000000;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 470px) {
+    .popup-cards__input {
+        margin: 0 0 27px 0;
+    }
+}
+
+.popup-cards__input:nth-child(n+2) { 
+    margin: 0 0 48px 0;
+} 
+
+@media screen and (max-width: 470px) {
+    .popup-cards__input:nth-child(n+2) {
+        margin: 0 0 48px 0;
+
+    }
+}
 
 
+.popup-cards__submit-button {
+    background-color: #000000;
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.21;
+    text-align: center;
+    color: #FFFFFF;
+    max-width: 358px;
+    min-height: 50px;
+    width: 100%;
+    opacity: 1;
+    transition: 0.5s linear;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+}
 
+.popup-cards__submit-button:hover {
+    opacity: 0.8;
+}
 
+@media screen and (max-width: 470px) {
+    .popup-cards__submit-button {
+        font-size: 14px;
+        line-height: 1;
 
+    }
+}
 
 
 
