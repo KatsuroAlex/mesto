@@ -1,8 +1,6 @@
 let editButton = document.querySelector('.profile__rectangle-button');
 const popup = document.querySelector('.popup');
 const popupCloseButton = document.querySelector('.popup__close');
-
-
 let formElement = document.querySelector('.popup__form');
 let nameInput = formElement.querySelector('.popup__input_field_name');
 let jobInput = formElement.querySelector('.popup__input_field_info');
@@ -13,57 +11,19 @@ let elementsElement = document.querySelector('.elements__element');
 let likeButton = document.querySelector('.elements__like');
 
 
-
-
-// 1 ПОПАП
-
-function openPopup(event) {
-    popup.classList.add('popup_opened');
-    nameInput.value = profileTitle.textContent;
-    jobInput.value = profileSubtitle.textContent;
-}
-
-function closePopup(event) {
-    popup.classList.remove('popup_opened');
-}
-
-
-function formSubmitHandler(evt) {
-    evt.preventDefault();
-    profileTitle.textContent = nameInput.value;
-    profileSubtitle.textContent = jobInput.value;
-    closePopup();
-}
-
-
-editButton.addEventListener('click', openPopup);
-popupCloseButton.addEventListener('click', closePopup);
-formElement.addEventListener('submit', formSubmitHandler);
-
-
-
-
-// 2 ПОПАП
-
 let addButton = document.querySelector('.profile__add-button');
 const popupCards = document.querySelector('.popup-cards_adjust_item');
 let popupCardsCloseButton = document.querySelector('.popup-cards__close');
 
 
 
-function openPopupCards(event) {
-    popupCards.classList.add('popup-cards_opened');
-};
+const itemTemplate = document.querySelector('.item_template').content;
+const list = document.querySelector('.elements__list');
+const cardsFormButton = document.querySelector('.popup-cards__submit-button');
+let formInputName = document.querySelector('.popup-cards__input_field_name');
+let formInputLink = document.querySelector('.popup-cards__input_field_info');
+let popupCardsForm = document.querySelector('.popup-cards__form');
 
-function closePopupCards(event) {
-    popupCards.classList.remove('popup-cards_opened');
-};
-
-addButton.addEventListener('click', openPopupCards);
-popupCardsCloseButton.addEventListener('click', closePopupCards);
-
-
-// ЗАГРУЗКА КАРТ НА СТРАНИЦУ ПРИ ОТКРЫТИИ 
 
 const initialCards = [
     {
@@ -92,18 +52,52 @@ const initialCards = [
     }
 ];
 
-const itemTemplate = document.querySelector('.item_template').content;
-const list = document.querySelector('.elements__list');
-const cardsFormButton = document.querySelector('.popup-cards__submit-button');
-let formInputName = document.querySelector('.popup-cards__input_field_name');
-let formInputLink = document.querySelector('.popup-cards__input_field_info');
-let popupCardsForm = document.querySelector('.popup-cards__form');
+
+// 1 ПОПАП
+
+function openPopup(event) {
+    popup.classList.add('popup_opened');
+    nameInput.value = profileTitle.textContent;
+    jobInput.value = profileSubtitle.textContent;
+};
+
+function closePopup(event) {
+    popup.classList.remove('popup_opened');
+};
 
 
+function formSubmitHandler(evt) {
+    evt.preventDefault();
+    profileTitle.textContent = nameInput.value;
+    profileSubtitle.textContent = jobInput.value;
+    closePopup();
+};
+
+
+editButton.addEventListener('click', openPopup);
+popupCloseButton.addEventListener('click', closePopup);
+formElement.addEventListener('submit', formSubmitHandler);
+
+
+// 2 ПОПАП
+
+function openPopupCards(event) {
+    popupCards.classList.add('popup-cards_opened');
+};
+
+function closePopupCards(event) {
+    popupCards.classList.remove('popup-cards_opened');
+};
+
+addButton.addEventListener('click', openPopupCards);
+popupCardsCloseButton.addEventListener('click', closePopupCards);
+
+
+// ЗАГРУЗКА КАРТ НА СТРАНИЦУ ПРИ ОТКРЫТИИ 
 // Добавление 6 карточек из массива
 function renderItems() {
     initialCards.forEach(renderItem);
-}
+};
 
 function renderItem(element) {
     const htmlElement = itemTemplate.cloneNode(true);
@@ -155,16 +149,16 @@ function closePopupPicture(event) {
 popupPictureCloseButton.addEventListener('click', closePopupPicture);
 
 
-
 // Кнопка Удаления
 
 function handleDelete(evt) {
     evt.target.closest('.elements__element').remove();
-}
+};
+
 function setEventListeners(htmlElement) {
     const deleteButton = htmlElement.querySelector('.elements__delete-card');
     deleteButton.addEventListener('click', handleDelete);
-}
+};
 
 
 
