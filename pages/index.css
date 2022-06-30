@@ -76,11 +76,22 @@
     background-color: rgba(0, 0, 0, 0.5);
     top: 0;
     left: 0;
-    display: none;
+    /* display: none; */
+
+
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s, visibility 0s 1s;
+
+
 }
 
 .popup-cards_opened {
     display: flex;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s;
 }
 
 .popup-cards__container {
@@ -234,8 +245,31 @@
     .popup-cards__submit-button {
         font-size: 14px;
         line-height: 1;
-
     }
+}
+
+
+.elements__delete-card {
+    background: url('../images/Delete_button.svg') no-repeat center center;
+    width: 18px;
+    height: 19px;
+    opacity: 1;
+    transition: 0.2s linear;
+    /* margin-top: 37px; */
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: transparent;
+    align-self: center;
+    background-size: 100%;
+    padding: 0;
+    border: none;
+    color: #000000;
+}
+
+.elements__delete-card:hover {
+    opacity: 0.6;
 }
 
 
@@ -253,7 +287,109 @@
 
 
 
+.popup-picture {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    /* display: none; */
 
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s, visibility 0s 1s;
+
+
+}
+
+.popup-picture_opened {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s;
+
+
+}
+
+.popup-picture__container {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 34px 36px 37px 36px;
+    margin: auto;
+    border-radius: 10px;
+    max-width: 356px;
+    width: 100%;
+    position: relative;
+}
+
+
+@media screen and (max-width: 470px) {
+    .popup-picture__container {
+        max-width: 237px;
+        padding: 25px 22px 25px 22px;
+
+    }
+}
+
+
+
+
+.popup-picture__close {
+    background: url('../../../images/Close_Icon.svg') no-repeat center center;
+    box-sizing: border-box;
+    border: none;
+    background-color: transparent;
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    justify-content: flex-end;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    opacity: 1;
+    transition: 0.5s linear;
+    cursor: pointer;
+}
+
+
+.popup-picture__close:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 470px) {
+    .popup-picture__close {
+        width: 20px;
+        height: 20px;
+        right: -1px;
+        top: -37px;
+    }
+
+}
+
+.popup-picture__group {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-picture__image {
+    width: 100%;
+    height: 100%;
+}
+
+.popup-picture__title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1;
+    color: #FFFFFF;
+}
 
 
 
