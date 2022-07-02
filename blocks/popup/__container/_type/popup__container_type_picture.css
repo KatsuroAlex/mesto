@@ -1,0 +1,21 @@
+.popup__container_type_picture {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 34px 36px 37px 36px;
+    margin: auto;
+    border-radius: 10px;
+    max-width: 356px;
+    width: 100%;
+    position: relative;
+}
+
+
+@media screen and (max-width: 470px) {
+    .popup__container_type_picture {
+        max-width: 240px;
+        padding: 25px 22px 25px 22px;
+    }
+}

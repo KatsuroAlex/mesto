@@ -44,15 +44,16 @@
   </div>
 
 
-  <div class="popup">
+
+
+
+  <!-- <div class="popup">
     <div class="popup__container">
       <button class="popup__close" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="form">
-        <input type="text" value="1" placeholder="Имя" 
-        class="popup__input popup__input_field_name" name="name">
-        <input type="text" value="2" placeholder="Информация" 
-        class="popup__input popup__input_field_info" name="info">
+        <input type="text" value="1" placeholder="Имя" class="popup__input popup__input_field_name" name="name">
+        <input type="text" value="2" placeholder="Информация" class="popup__input popup__input_field_info" name="info">
         <button class="popup__submit-button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -64,10 +65,8 @@
       <button class="popup-cards__close" type="button"></button>
       <h2 class="popup-cards__title">Новое место</h2>
       <form class="popup-cards__form" name="cards-form">
-        <input type="text" placeholder="Название" 
-        class="popup-cards__input popup-cards__input_field_name" name="cards-name">
-        <input type="text" placeholder="Ссылка на картинку" 
-        class="popup-cards__input popup-cards__input_field_info" name="cards-info">
+        <input type="text" placeholder="Название" class="popup-cards__input popup-cards__input_field_name" name="cards-name">
+        <input type="text" placeholder="Ссылка на картинку" class="popup-cards__input popup-cards__input_field_info" name="cards-info">
         <button class="popup-cards__submit-button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -82,16 +81,61 @@
         <h2 class="popup-picture__title"></h2>
       </div>
     </div>
+  </div> -->
+
+
+
+
+
+
+
+
+
+
+  <div class="popup">
+    <div class="popup__container">
+      <button class="popup__close" type="button"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" name="form">
+        <input type="text" value="1" placeholder="Имя" class="popup__input popup__input_field_name" name="name">
+        <input type="text" value="2" placeholder="Информация" class="popup__input popup__input_field_info" name="info">
+        <button class="popup__submit-button" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="popup popup_type_cards">
+    <div class="popup__container">
+      <button class="popup__close popup__close_type_cards" type="button"></button>
+      <h2 class="popup__title popup__title_type_cards">Новое место</h2>
+      <form class="popup__form popup__form_type_cards" name="cards-form">
+        <input type="text" placeholder="Название" class="popup__input popup__input_card_name" name="cards-name">
+        <input type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_card_link" name="cards-link">
+        <button class="popup__submit-button popup__submit-button_type_cards" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="popup popup_type_picture">
+    <div class="popup__container popup__container_type_picture">
+      <button class="popup__close popup__close_type_picture" type="button"></button>
+      <div class="popup__group">  <!-- Сделать дополнительный див для крестика -->
+        <img class="popup__image" src="#" alt="Картинка">
+        <h2 class="popup__title popup__title_type_picture"></h2>
+      </div>
+    </div>
   </div>
 
 
   <template class="item_template">
-    <li class="elements__element">
-      <button class="elements__delete-card" type="button"></button>
-      <img class="elements__photo" src="#" alt="Картинка">
-      <div class="elements__title">
-        <h2 class="elements__text"></h2>
-        <button class="elements__like" type="button"></button>
+    <li class="element">
+      <button class="element__delete-card" type="button"></button>
+      <img class="element__photo" src="#" alt="Картинка">
+      <div class="element__title">
+        <h2 class="element__text"></h2>
+        <button class="element__like" type="button"></button>
       </div>
     </li>
   </template>

@@ -11,7 +11,7 @@
     font-size: 14px;
     line-height: 2.21;
     color: #000000;
-    cursor: pointer;
+    cursor: text;
 }
 
 @media screen and (max-width: 470px) {
@@ -27,7 +27,6 @@
 @media screen and (max-width: 470px) {
     .popup__input:nth-child(n+2) {
         margin: 0 0 48px 0;
-
     }
 }
 
