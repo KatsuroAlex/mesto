@@ -63,8 +63,7 @@
 @import url('../blocks/popup/__submit-button/popup__submit-button.css');
 @import url('../blocks/popup/__container/_type/popup__container_type_picture.css');
 @import url('../blocks/popup/__close/_type/popup__close_type_picture.css');
+@import url('../blocks/popup/__group-centrate/popup__group-centrate.css');
 @import url('../blocks/popup/__group/popup__group.css');
 @import url('../blocks/popup/__image/popup__image.css');
 @import url('../blocks/popup/__title/_type/popup__title_type_picture.css');
-
-

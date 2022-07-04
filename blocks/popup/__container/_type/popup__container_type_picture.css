@@ -4,10 +4,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    padding: 34px 36px 37px 36px;
+    /* padding: 34px 36px 37px 36px; */
+    padding: 0;
     margin: auto;
     border-radius: 10px;
-    max-width: 356px;
+    max-width: 70vw;
     width: 100%;
     position: relative;
 }
@@ -17,5 +18,13 @@
     .popup__container_type_picture {
         max-width: 240px;
         padding: 25px 22px 25px 22px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .popup__container_type_picture {
+        max-width: 240px;
+        padding: 0;
+        margin: auto 40px;
     }
 }
