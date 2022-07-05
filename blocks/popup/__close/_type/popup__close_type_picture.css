@@ -8,8 +8,9 @@
     height: 32px;
     padding: 0;
     justify-content: flex-end;
-    margin: 0 0 2px auto;
-    position: static;
+    position: absolute;
+    top: -36px;
+    right: -34px;
     opacity: 1;
     transition: 0.5s linear;
     cursor: pointer;
@@ -25,7 +26,16 @@
     .popup__close_type_picture {
         width: 20px;
         height: 20px;
-        right: -1px;
-        top: -37px;
+        right: 20px;
+        top: -8px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .popup__close_type_picture {
+        width: 20px;
+        height: 20px;
+        right: 0;
+        top: -28px;
     }
 }
