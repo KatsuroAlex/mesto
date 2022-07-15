@@ -27,3 +27,23 @@
         line-height: 1;
     }
 }
+
+
+/* .popup__submit-button_inactive {
+    background-color: none;
+    color: #FFFFFF;
+} */
+
+
+
+.button_inactive {
+    background-color: transparent;
+    color: gray;
+    border: 1px solid gray;
+}
+
+/* .button_inactive:disabled {
+    background-color: transparent;
+    color: gray;
+    border: 1px solid gray;
+} */

@@ -4,7 +4,7 @@ const form = document.querySelector('.popup__form');
 const nameInput = form.querySelector('.popup__input_field_name');
 const jobInput = form.querySelector('.popup__input_field_info');
 
-const popupSubmitButton = document.querySelector('.popup__submit-button');
+// const popupSubmitButton = document.querySelector('.popup__submit-button');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const cardElement = document.querySelector('.element');
@@ -121,43 +121,6 @@ form.addEventListener('submit', handleSubmitProfileForm);
 
 
 
-
-// ПО ЛАЙВКОДИНГУ
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // // ПО ТРЕНАЖЕРУ
 
 function showInputError (formElement, inputElement, errorMessage) {
@@ -184,13 +147,16 @@ function checkInputValidity (formElement, inputElement) {
 
 function setEventListeners (formElement) {
     const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+    const buttonElement = formElement.querySelector('.popup__submit-button');
+    toggleButtonState(inputList, buttonElement);
+
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', function () {
             checkInputValidity(formElement, inputElement);
+            toggleButtonState(inputList, buttonElement);
         });
     });  
 }
-
 
 function enableValidation () {
     const formList = Array.from(document.querySelectorAll('.popup__form'));
@@ -198,7 +164,12 @@ function enableValidation () {
         formElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
         });
-        setEventListeners(formElement);
+
+        const fieldsetList = Array.from(formElement.querySelectorAll('.popup__set'));
+          fieldsetList.forEach((fieldSet) => {
+          setEventListeners(fieldSet);
+        });
+        // setEventListeners(formElement);
     });
 }
 
@@ -212,27 +183,17 @@ function hasInvalidInput (inputList) {
 
 function toggleButtonState (inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
+    
     buttonElement.classList.add('button_inactive');
+    buttonElement.disabled = true;
+    
   } else {
+
     buttonElement.classList.remove('button_inactive');
+    buttonElement.disabled = false;
+
   };
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
