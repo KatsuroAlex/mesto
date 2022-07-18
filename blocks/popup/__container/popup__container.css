@@ -9,6 +9,7 @@
     border-radius: 10px;
     max-width: 356px;
     width: 100%;
+    min-height: 259px;
     position: relative;
 }
 

@@ -58,10 +58,12 @@
 @import url('../blocks/popup/__title/popup__title.css');
 @import url('../blocks/popup/__form/popup__form.css');
 @import url('../blocks/popup/__input/popup__input.css');
+@import url('../blocks/popup/__input/_type/popup__input_type_error.css');
+@import url('../blocks/popup/__input-error/popup__input-error.css');
+@import url('../blocks/popup/__input-error/_centrate/popup__input-error_centrate.css');
 @import url('../blocks/popup/__submit-button/popup__submit-button.css');
+@import url('../blocks/popup/__submit-button/_inactive/popup__submit-button_inactive.css');
 @import url('../blocks/popup/__container/_type/popup__container_type_picture.css');
 @import url('../blocks/popup/__close/_type/popup__close_type_picture.css');
 @import url('../blocks/popup/__image/popup__image.css');
 @import url('../blocks/popup/__title/_type/popup__title_type_picture.css');
-
-@import url('../blocks/popup/__input/_type/popup__input_type_error.css');
