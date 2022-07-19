@@ -35,25 +35,12 @@ function setEventListeners(formElement, settings) {
     });
 };
 
-
 function enableValidation(settings) {
     const formList = Array.from(document.querySelectorAll(settings.formSelector));
     formList.forEach((formElement) => {
-        formElement.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-        });
         setEventListeners(formElement, settings);
     });
 };
-
-enableValidation({
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__submit-button',
-    inactiveButtonClass: 'popup__submit-button_inactive',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_active',
-});
 
 function hasInvalidInput(inputList) {
     return inputList.some((inputElement) => {
@@ -70,3 +57,12 @@ function toggleButtonState(inputList, buttonElement, settings) {
         buttonElement.disabled = false;
     };
 };
+
+enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit-button',
+    inactiveButtonClass: 'popup__submit-button_inactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active',
+});
