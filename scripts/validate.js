@@ -22,6 +22,7 @@ function checkInputValidity(formElement, inputElement, settings) {
     };
 };
 
+
 function setEventListeners(formElement, settings) {
     const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
     const buttonElement = formElement.querySelector(settings.submitButtonSelector);
