@@ -3,7 +3,6 @@ import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 
 
-
 const popups = document.querySelectorAll('.popup');
 const popupContainer = document.querySelector('.popup__container');
 const form = document.querySelector('.popup__form');
