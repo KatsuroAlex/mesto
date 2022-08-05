@@ -4,24 +4,17 @@ import { FormValidator } from './FormValidator.js';
 
 
 const popups = document.querySelectorAll('.popup');
-const popupContainer = document.querySelector('.popup__container');
-const form = document.querySelector('.popup__form');
-const nameInput = form.querySelector('.popup__input_field_name');
-const jobInput = form.querySelector('.popup__input_field_info');
+const generalForm = document.querySelector('.popup__form');
+const nameInput = generalForm.querySelector('.popup__input_field_name');
+const jobInput = generalForm.querySelector('.popup__input_field_info');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const cardElement = document.querySelector('.element');
-const buttonLike = document.querySelector('.element__like');
-const elementPhoto = document.querySelector('.element__photo');
-const itemTemplate = document.querySelector('.item_template').content;
 export const list = document.querySelector('.elements__list');
-const cardsFormButton = document.querySelector('.popup__submit-button_type_cards');
 const formInputName = document.querySelector('.popup__input_card_name');
 const formInputLink = document.querySelector('.popup__input_card_link');
 const popupCardsForm = document.querySelector('.popup__form_type_cards');
 export const popupPictureImage = document.querySelector('.popup__image');
 export const popupPictureTitle = document.querySelector('.popup__title_type_picture');
-const elementText = document.querySelector('.element__text');
 const popupProfile = document.querySelector('.popup_type_profile');
 const popupCards = document.querySelector('.popup_type_cards');
 export const popupPicture = document.querySelector('.popup_type_picture');
@@ -70,13 +63,12 @@ function handleSubmitPopupCardsForm(evt) {
     evt.preventDefault();
     renderCard({ name: formInputName.value, link: formInputLink.value });
     popupCardsForm.reset();
-    const cardsForm = new FormValidator(settings, popupCardsForm);
-    cardsForm.toggleButtonState();
+    formCardsOnValidate.toggleButtonState();
     closePopup(popupCards);
 };
 
 popupCardsForm.addEventListener('submit', handleSubmitPopupCardsForm);
-form.addEventListener('submit', handleSubmitProfileForm);
+generalForm.addEventListener('submit', handleSubmitProfileForm);
 
 // СОЗДАНИЕ КАРТОЧЕК //////
 
