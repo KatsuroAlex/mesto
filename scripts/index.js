@@ -4,22 +4,22 @@ import { FormValidator } from './FormValidator.js';
 
 
 const popups = document.querySelectorAll('.popup');
-const generalForm = document.querySelector('.popup__form');
-const nameInput = generalForm.querySelector('.popup__input_field_name');
-const jobInput = generalForm.querySelector('.popup__input_field_info');
+const forms = document.querySelector('.popup__form');
+const nameInput = forms.querySelector('.popup__input_field_name');
+const jobInput = forms.querySelector('.popup__input_field_info');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-export const list = document.querySelector('.elements__list');
+const list = document.querySelector('.elements__list');
 const formInputName = document.querySelector('.popup__input_card_name');
 const formInputLink = document.querySelector('.popup__input_card_link');
-const popupCardsForm = document.querySelector('.popup__form_type_cards');
-export const popupPictureImage = document.querySelector('.popup__image');
-export const popupPictureTitle = document.querySelector('.popup__title_type_picture');
+const popupPictureImage = document.querySelector('.popup__image');
+const popupPictureTitle = document.querySelector('.popup__title_type_picture');
 const popupProfile = document.querySelector('.popup_type_profile');
 const popupCards = document.querySelector('.popup_type_cards');
-export const popupPicture = document.querySelector('.popup_type_picture');
+const popupPicture = document.querySelector('.popup_type_picture');
 const buttonEditProfile = document.querySelector('.profile__rectangle-button');
 const buttonAddCard = document.querySelector('.profile__add-button');
+const popupCardsForm = document.querySelector('.popup__form_type_cards');
 const popupProfileForm = document.querySelector('.popup__form_profile');
 
 
@@ -68,7 +68,7 @@ function handleSubmitPopupCardsForm(evt) {
 };
 
 popupCardsForm.addEventListener('submit', handleSubmitPopupCardsForm);
-generalForm.addEventListener('submit', handleSubmitProfileForm);
+forms.addEventListener('submit', handleSubmitProfileForm);
 
 // СОЗДАНИЕ КАРТОЧЕК //////
 
