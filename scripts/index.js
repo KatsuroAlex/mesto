@@ -4,9 +4,6 @@ import { FormValidator } from './FormValidator.js';
 
 
 const popups = document.querySelectorAll('.popup');
-const forms = document.querySelector('.popup__form');
-const nameInput = forms.querySelector('.popup__input_field_name');
-const jobInput = forms.querySelector('.popup__input_field_info');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const list = document.querySelector('.elements__list');
@@ -21,7 +18,8 @@ const buttonEditProfile = document.querySelector('.profile__rectangle-button');
 const buttonAddCard = document.querySelector('.profile__add-button');
 const popupCardsForm = document.querySelector('.popup__form_type_cards');
 const popupProfileForm = document.querySelector('.popup__form_profile');
-
+const nameInput = popupProfileForm.querySelector('.popup__input_field_name');
+const jobInput = popupProfileForm.querySelector('.popup__input_field_info');
 
 export function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -63,12 +61,11 @@ function handleSubmitPopupCardsForm(evt) {
     evt.preventDefault();
     renderCard({ name: formInputName.value, link: formInputLink.value });
     popupCardsForm.reset();
-    formCardsOnValidate.toggleButtonState();
     closePopup(popupCards);
 };
 
 popupCardsForm.addEventListener('submit', handleSubmitPopupCardsForm);
-forms.addEventListener('submit', handleSubmitProfileForm);
+popupProfileForm.addEventListener('submit', handleSubmitProfileForm);
 
 // СОЗДАНИЕ КАРТОЧЕК //////
 
@@ -107,7 +104,7 @@ const settings = {
     errorClass: 'popup__input-error_active',
 };
 
-
+// Можно сделать поиск формы через функцию
 const formCardsOnValidate = new FormValidator(settings, popupCardsForm);
 formCardsOnValidate.enableValidation();
 
