@@ -1,12 +1,9 @@
-
 class Section {
-    constructor({items, renderer}, containerSelector) {
+  constructor({ items, renderer }, containerSelector) {
+    this.items = items;
+  }
 
-  
+  renderer() {}
 
-    }
-
-
-    _renderer
-
+  _addItem() {}
 }
