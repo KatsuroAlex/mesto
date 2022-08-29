@@ -45,6 +45,16 @@ const defaultCardList = new Section(
   },
   ".elements__list"
 );
+
+// const defaultCardList = new Section(
+//   {
+//     items: initialCards,
+//     renderer: (item) => {
+//       defaultCardList.addItem(createCard(item));
+//     },
+//   },
+//   ".elements__list"
+// );
 defaultCardList.renderItems();
 
 const popupWithImage = new PopupWithImage(popupPicture);
@@ -55,23 +65,22 @@ function handleCardClick(name, link) {
   popupWithImage.open(name, link);
 }
 
-// Отправка формы popupCards
-const popupWithFormCards = new PopupWithForm(popupCards, handleSubmitForm);
-popupWithFormCards.setEventListeners();
 
-const addListItem = (item) => {
-  const card = new Card(
-    { name: data.name, link: data.link },
-    ".item_template",
-    handleCardClick
-  );
-  const newCard = card.generateCard();
-  //defaultCardList.addItem(addListItem(item));
-};
+
+
+
+
+
+
+
+// Отправка формы popupCards
+const popupWithFormCards = new PopupWithForm(popupCards, (item) => {
+  defaultCardList.addItem(createCard(item));
+});
+popupWithFormCards.setEventListeners();
 
 function handleSubmitPopupCardsForm(evt) {
   evt.preventDefault();
-  defaultCardList.addItem();
   popupCardsForm.reset();
   popupWithFormCards.close();
 
@@ -80,10 +89,25 @@ function handleSubmitPopupCardsForm(evt) {
 
 popupCardsForm.addEventListener("submit", handleSubmitPopupCardsForm);
 
-const popupWithFormProfile = new PopupWithForm(popupProfile);
+
+
+
+
+
+
+
+
+
+
+const popupWithFormProfile = new PopupWithForm(
+  popupProfile,
+//   (item) => {
+//     defaultCardList.addItem(createCard(item))}
+);
 popupWithFormProfile.setEventListeners();
 
-// ОТПРАВКА ФОРМЫ popupProfile (работает, но есть ошибка в консоли пр инажатии на отправку)
+
+// ОТПРАВКА ФОРМЫ popupProfile (работает, но есть ошибка в консоли при нажатии на отправку)
 function handleSubmitProfileForm(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
@@ -91,7 +115,15 @@ function handleSubmitProfileForm(evt) {
   popupWithFormProfile.close();
 }
 
+
 popupProfileForm.addEventListener("submit", handleSubmitProfileForm);
+
+
+
+
+
+
+
 
 // ВАЛИДАЦИЯ //////
 const formCardsOnValidate = new FormValidator(settings, popupCardsForm);
