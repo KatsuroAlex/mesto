@@ -34,8 +34,6 @@ export class Popup {
         this.close();
       }
     });
-
-    // this._popupSelector.addEventListener("keydown", this._handleEscClose());
   }
 }
 

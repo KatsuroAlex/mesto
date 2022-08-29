@@ -31,8 +31,6 @@ export class Card {
     );
     this._elementText = this._element.querySelector(".element__text");
 
-    console.log(this._handleCardClick);
-
     this._elementPhoto.addEventListener("click", () => {
       this._handleCardClick(this._name, this._link);
     });

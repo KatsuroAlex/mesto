@@ -25,18 +25,14 @@ const popupProfileForm = document.querySelector(".popup__form_profile");
 const nameInput = popupProfileForm.querySelector(".popup__input_field_name");
 const jobInput = popupProfileForm.querySelector(".popup__input_field_info");
 
+//СОЗДАНИЕ первоначальных карточек и их выгрузка на страницу КАРТОЧЕК ////// (работает)
 function createCard(data) {
-  const defaultCardList = new Card(
-    {
-      name: data.name,
-      link: data.link,
-      handleCardClick: () => {
-        popupWithImage.open(data.name, data.link);
-      },
-    },
-    ".item_template"
+  const card = new Card(
+    { name: data.name, link: data.link },
+    ".item_template",
+    handleCardClick
   );
-  const newCard = defaultCardList.generateCard();
+  const newCard = card.generateCard();
   return newCard;
 }
 
@@ -51,42 +47,41 @@ const defaultCardList = new Section(
 );
 defaultCardList.renderItems();
 
-//СОЗДАНИЕ первоначальных карточек и их выгрузка на страницу КАРТОЧЕК ////// (работает)
-// const defaultCardList = new Section(
-//   {
-//     items: initialCards,
-//     renderer: (item) => {
-//       const card = new Card(item, ".item_template", handleCardClick);
-//       const cardElement = card.generateCard();
-//       defaultCardList.addItem(cardElement);
-//     },
-//   },
-//   ".elements__list"
-// );
-// defaultCardList.renderItems();
-
 const popupWithImage = new PopupWithImage(popupPicture);
 popupWithImage.setEventListeners();
 
-// открытие попапа с картинкой (не работает)
+// открытие попапа с картинкой (работает)
 function handleCardClick(name, link) {
   popupWithImage.open(name, link);
 }
 
 // Отправка формы popupCards
+const popupWithFormCards = new PopupWithForm(popupCards, handleSubmitForm);
+popupWithFormCards.setEventListeners();
+
+const addListItem = (item) => {
+  const card = new Card(
+    { name: data.name, link: data.link },
+    ".item_template",
+    handleCardClick
+  );
+  const newCard = card.generateCard();
+  //defaultCardList.addItem(addListItem(item));
+};
+
 function handleSubmitPopupCardsForm(evt) {
   evt.preventDefault();
-  defaultCardList.renderItems();
+  defaultCardList.addItem();
   popupCardsForm.reset();
   popupWithFormCards.close();
 
   //   renderCard({ name: formInputName.value, link: formInputLink.value });
 }
 
+popupCardsForm.addEventListener("submit", handleSubmitPopupCardsForm);
+
 const popupWithFormProfile = new PopupWithForm(popupProfile);
 popupWithFormProfile.setEventListeners();
-const popupWithFormCards = new PopupWithForm(popupCards);
-popupWithFormCards.setEventListeners();
 
 // ОТПРАВКА ФОРМЫ popupProfile (работает, но есть ошибка в консоли пр инажатии на отправку)
 function handleSubmitProfileForm(evt) {
@@ -96,7 +91,6 @@ function handleSubmitProfileForm(evt) {
   popupWithFormProfile.close();
 }
 
-popupCardsForm.addEventListener("submit", handleSubmitPopupCardsForm);
 popupProfileForm.addEventListener("submit", handleSubmitProfileForm);
 
 // ВАЛИДАЦИЯ //////
