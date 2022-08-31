@@ -5,27 +5,24 @@ import { Section } from "../components/Section.js";
 import { Popup } from "../components/Popup.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
+import { UserInfo } from "../components/UserInfo.js";
 
-// ЗАМЕНИТЬ НА ИМПОРТ КОНСТАНТ
-const popups = document.querySelectorAll(".popup");
-const profileTitle = document.querySelector(".profile__title");
-const profileSubtitle = document.querySelector(".profile__subtitle");
-const list = document.querySelector(".elements__list");
-const formInputName = document.querySelector(".popup__input_card_name");
-const formInputLink = document.querySelector(".popup__input_card_link");
-const popupPictureImage = document.querySelector(".popup__image");
-const popupPictureTitle = document.querySelector(".popup__title_type_picture");
-const popupProfile = document.querySelector(".popup_type_profile");
-const popupCards = document.querySelector(".popup_type_cards");
-const popupPicture = document.querySelector(".popup_type_picture");
-const buttonEditProfile = document.querySelector(".profile__rectangle-button");
-const buttonAddCard = document.querySelector(".profile__add-button");
-const popupCardsForm = document.querySelector(".popup__form_type_cards");
-const popupProfileForm = document.querySelector(".popup__form_profile");
-const nameInput = popupProfileForm.querySelector(".popup__input_field_name");
-const jobInput = popupProfileForm.querySelector(".popup__input_field_info");
+import {
+  profileTitle,
+  profileSubtitle,
+  popupProfile,
+  popupCards,
+  popupPicture,
+  buttonEditProfile,
+  buttonAddCard,
+  popupCardsForm,
+  popupProfileForm,
+  nameInput,
+  jobInput,
+  popupProfileButton,
+} from "../utils/constants.js";
 
-//СОЗДАНИЕ первоначальных карточек и их выгрузка на страницу КАРТОЧЕК ////// (работает)
+//СОЗДАНИЕ первоначальных карточек и их выгрузка на страницу
 function createCard(data) {
   const card = new Card(
     { name: data.name, link: data.link },
@@ -45,87 +42,47 @@ const defaultCardList = new Section(
   },
   ".elements__list"
 );
-
-// const defaultCardList = new Section(
-//   {
-//     items: initialCards,
-//     renderer: (item) => {
-//       defaultCardList.addItem(createCard(item));
-//     },
-//   },
-//   ".elements__list"
-// );
 defaultCardList.renderItems();
 
+// Отправка формы popupCards и добавление новой карточки
+const popupWithFormCards = new PopupWithForm(popupCards, (item) => {
+  defaultCardList.addItem(createCard(item));
+  popupWithFormCards.close();
+});
+popupWithFormCards.setEventListeners();
+
+// открытие попапа с картинкой
 const popupWithImage = new PopupWithImage(popupPicture);
 popupWithImage.setEventListeners();
 
-// открытие попапа с картинкой (работает)
 function handleCardClick(name, link) {
   popupWithImage.open(name, link);
 }
 
-
-
-
-
-
-
-
-
-// Отправка формы popupCards
-const popupWithFormCards = new PopupWithForm(popupCards, (item) => {
-  defaultCardList.addItem(createCard(item));
+//Функционал popupProfile по добавлению текста пользователя
+const userInfo = new UserInfo({
+  userName: ".profile__title",
+  userInfo: ".profile__subtitle",
 });
-popupWithFormCards.setEventListeners();
-
-function handleSubmitPopupCardsForm(evt) {
-  evt.preventDefault();
-  popupCardsForm.reset();
-  popupWithFormCards.close();
-
-  //   renderCard({ name: formInputName.value, link: formInputLink.value });
-}
-
-popupCardsForm.addEventListener("submit", handleSubmitPopupCardsForm);
-
-
-
-
-
-
-
-
-
-
-
-const popupWithFormProfile = new PopupWithForm(
-  popupProfile,
-//   (item) => {
-//     defaultCardList.addItem(createCard(item))}
-);
+const popupWithFormProfile = new PopupWithForm(popupProfile, (data) => {
+  console.log(data);
+  userInfo.setUserInfo(data);
+  popupWithFormProfile.close();
+});
 popupWithFormProfile.setEventListeners();
 
+popupProfileButton.addEventListener("click", () => {
+  const userData = userInfo.getUserInfo();
+  nameInput.value = userData.name;
+  jobInput.value = userData.info;
+  console.log(userInfo.getUserInfo());
+  console.log(nameInput.value);
+  console.log(jobInput.value);
 
-// ОТПРАВКА ФОРМЫ popupProfile (работает, но есть ошибка в консоли при нажатии на отправку)
-function handleSubmitProfileForm(evt) {
-  evt.preventDefault();
-  profileTitle.textContent = nameInput.value;
-  profileSubtitle.textContent = jobInput.value;
-  popupWithFormProfile.close();
-}
+  popupWithFormProfile.open();
+});
 
-
-popupProfileForm.addEventListener("submit", handleSubmitProfileForm);
-
-
-
-
-
-
-
-
-// ВАЛИДАЦИЯ //////
+// Валидация инпутов
 const formCardsOnValidate = new FormValidator(settings, popupCardsForm);
 formCardsOnValidate.enableValidation();
 

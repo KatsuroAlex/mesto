@@ -5,7 +5,7 @@ export class Card {
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
   }
-
+  // получаем разметку
   _getTemplate() {
     const cardElement = document
       .querySelector(this._templateSelector)

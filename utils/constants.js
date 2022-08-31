@@ -34,28 +34,30 @@ export const settings = {
   errorClass: "popup__input-error_active",
 };
 
-// export const popups = document.querySelectorAll(".popup");
-// export const profileTitle = document.querySelector(".profile__title");
-// export const profileSubtitle = document.querySelector(".profile__subtitle");
-// export const list = document.querySelector(".elements__list");
-// export const formInputName = document.querySelector(".popup__input_card_name");
-// export const formInputLink = document.querySelector(".popup__input_card_link");
-// export const popupPictureImage = document.querySelector(".popup__image");
-// export const popupPictureTitle = document.querySelector(
-//   ".popup__title_type_picture"
-// );
-// export const popupProfile = document.querySelector(".popup_type_profile");
-// export const popupCards = document.querySelector(".popup_type_cards");
-// export const popupPicture = document.querySelector(".popup_type_picture");
-// export const buttonEditProfile = document.querySelector(
-//   ".profile__rectangle-button"
-// );
-// export const buttonAddCard = document.querySelector(".profile__add-button");
-// export const popupCardsForm = document.querySelector(".popup__form_type_cards");
-// export const popupProfileForm = document.querySelector(".popup__form_profile");
-// export const nameInput = popupProfileForm.querySelector(
-//   ".popup__input_field_name"
-// );
-// export const jobInput = popupProfileForm.querySelector(
-//   ".popup__input_field_info"
-// );
+const profileTitle = document.querySelector(".profile__title");
+const profileSubtitle = document.querySelector(".profile__subtitle");
+const popupProfile = document.querySelector(".popup_type_profile");
+const popupCards = document.querySelector(".popup_type_cards");
+const popupPicture = document.querySelector(".popup_type_picture");
+const buttonEditProfile = document.querySelector(".profile__rectangle-button");
+const buttonAddCard = document.querySelector(".profile__add-button");
+const popupCardsForm = document.querySelector(".popup__form_type_cards");
+const popupProfileForm = document.querySelector(".popup__form_profile");
+const nameInput = popupProfileForm.querySelector(".popup__input_field_name");
+const jobInput = popupProfileForm.querySelector(".popup__input_field_info");
+const popupProfileButton = document.querySelector(".popup__input_field_name");
+
+export {
+  profileTitle,
+  profileSubtitle,
+  popupProfile,
+  popupCards,
+  popupPicture,
+  buttonEditProfile,
+  buttonAddCard,
+  popupCardsForm,
+  popupProfileForm,
+  nameInput,
+  jobInput,
+  popupProfileButton,
+};
