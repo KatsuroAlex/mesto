@@ -78,7 +78,6 @@ popupProfileButton.addEventListener("click", () => {
   console.log(userInfo.getUserInfo());
   console.log(nameInput.value);
   console.log(jobInput.value);
-
   popupWithFormProfile.open();
 });
 
