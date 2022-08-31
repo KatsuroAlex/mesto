@@ -59,7 +59,7 @@ function handleCardClick(name, link) {
   popupWithImage.open(name, link);
 }
 
-//Функционал popupProfile по добавлению текста пользователя
+//Функционал popupProfile по добавлению текста пользователем
 const userInfo = new UserInfo({
   userName: ".profile__title",
   userInfo: ".profile__subtitle",
