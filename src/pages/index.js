@@ -1,3 +1,5 @@
+import "./index.css"; // добавьте импорт главного файла стилей
+
 import { initialCards, settings } from "../utils/constants.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
@@ -8,8 +10,6 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 
 import {
-  profileTitle,
-  profileSubtitle,
   popupProfile,
   popupCards,
   popupPicture,
@@ -19,7 +19,6 @@ import {
   popupProfileForm,
   nameInput,
   jobInput,
-  popupProfileButton,
 } from "../utils/constants.js";
 
 //СОЗДАНИЕ первоначальных карточек и их выгрузка на страницу
@@ -71,15 +70,17 @@ const popupWithFormProfile = new PopupWithForm(popupProfile, (data) => {
 });
 popupWithFormProfile.setEventListeners();
 
-popupProfileButton.addEventListener("click", () => {
+buttonEditProfile.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
-  nameInput.value = userData.name;
-  jobInput.value = userData.info;
+  popupWithFormProfile.setInputValues(userData);
+
+  // nameInput.value = userData.name;
+  // jobInput.value = userData.info;
   console.log(userInfo.getUserInfo());
   console.log(nameInput.value);
   console.log(jobInput.value);
-
   popupWithFormProfile.open();
+  formProfileOnValidate.resetValidation();
 });
 
 // Валидация инпутов
@@ -93,11 +94,4 @@ buttonAddCard.addEventListener("click", () => {
   popupWithFormCards.open();
   popupCardsForm.reset();
   formCardsOnValidate.resetValidation();
-});
-
-buttonEditProfile.addEventListener("click", () => {
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileSubtitle.textContent;
-  popupWithFormProfile.open();
-  formProfileOnValidate.resetValidation();
 });

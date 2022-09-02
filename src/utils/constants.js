@@ -34,8 +34,6 @@ export const settings = {
   errorClass: "popup__input-error_active",
 };
 
-const profileTitle = document.querySelector(".profile__title");
-const profileSubtitle = document.querySelector(".profile__subtitle");
 const popupProfile = document.querySelector(".popup_type_profile");
 const popupCards = document.querySelector(".popup_type_cards");
 const popupPicture = document.querySelector(".popup_type_picture");
@@ -45,11 +43,8 @@ const popupCardsForm = document.querySelector(".popup__form_type_cards");
 const popupProfileForm = document.querySelector(".popup__form_profile");
 const nameInput = popupProfileForm.querySelector(".popup__input_field_name");
 const jobInput = popupProfileForm.querySelector(".popup__input_field_info");
-const popupProfileButton = document.querySelector(".popup__input_field_name");
 
 export {
-  profileTitle,
-  profileSubtitle,
   popupProfile,
   popupCards,
   popupPicture,
@@ -59,5 +54,4 @@ export {
   popupProfileForm,
   nameInput,
   jobInput,
-  popupProfileButton,
 };
