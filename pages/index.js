@@ -1,13 +1,11 @@
-import "./pages/index.css";
-
-import { initialCards, settings } from "./utils/constants.js";
-import { Card } from "./components/Card.js";
-import { FormValidator } from "./components/FormValidator.js";
-import { Section } from "./components/Section.js";
-import { Popup } from "./components/Popup.js";
-import { PopupWithImage } from "./components/PopupWithImage.js";
-import { PopupWithForm } from "./components/PopupWithForm.js";
-import { UserInfo } from "./components/UserInfo.js";
+import { initialCards, settings } from "../utils/constants.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Section } from "../components/Section.js";
+import { Popup } from "../components/Popup.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { UserInfo } from "../components/UserInfo.js";
 
 import {
   profileTitle,
@@ -22,10 +20,7 @@ import {
   nameInput,
   jobInput,
   popupProfileButton,
-} from "./utils/constants.js";
-
-// const avatar = new URL("./images/Avatar_image.jpeg", import.meta.url);
-// const logo = new URL("./images/logo.svg", import.meta.url);
+} from "../utils/constants.js";
 
 //СОЗДАНИЕ первоначальных карточек и их выгрузка на страницу
 function createCard(data) {
@@ -64,7 +59,7 @@ function handleCardClick(name, link) {
   popupWithImage.open(name, link);
 }
 
-//Функционал popupProfile по добавлению текста пользователем
+//Функционал popupProfile по добавлению текста пользователя
 const userInfo = new UserInfo({
   userName: ".profile__title",
   userInfo: ".profile__subtitle",
@@ -83,6 +78,7 @@ popupProfileButton.addEventListener("click", () => {
   console.log(userInfo.getUserInfo());
   console.log(nameInput.value);
   console.log(jobInput.value);
+
   popupWithFormProfile.open();
 });
 
