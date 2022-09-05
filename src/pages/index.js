@@ -1,6 +1,7 @@
-import "./index.css"; // добавьте импорт главного файла стилей
+import "./index.css"; // добавляем импорт главного файла стилей
 
-import { initialCards, settings } from "../utils/constants.js";
+// import { initialCards, settings } from "../utils/constants.js";
+import { settings } from "../utils/constants.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
@@ -8,6 +9,7 @@ import { Popup } from "../components/Popup.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
+import { Api } from "../components/Api.js";
 
 import {
   popupProfile,
@@ -21,7 +23,9 @@ import {
   jobInput,
 } from "../utils/constants.js";
 
-//СОЗДАНИЕ первоначальных карточек и их выгрузка на страницу
+
+
+//////СОЗДАНИЕ первоначальных карточек и их выгрузка на страницу
 function createCard(data) {
   const card = new Card(
     { name: data.name, link: data.link },
@@ -34,14 +38,16 @@ function createCard(data) {
 
 const defaultCardList = new Section(
   {
-    items: initialCards,
     renderer: (item) => {
       defaultCardList.addItem(createCard(item));
     },
   },
   ".elements__list"
 );
-defaultCardList.renderItems();
+
+
+
+
 
 // Отправка формы popupCards и добавление новой карточки
 const popupWithFormCards = new PopupWithForm(popupCards, (item) => {
@@ -58,11 +64,22 @@ function handleCardClick(name, link) {
   popupWithImage.open(name, link);
 }
 
+
+
+
+
+
+
+
+
+
+
 //Функционал popupProfile по добавлению текста пользователя
 const userInfo = new UserInfo({
   userName: ".profile__title",
   userInfo: ".profile__subtitle",
 });
+
 const popupWithFormProfile = new PopupWithForm(popupProfile, (data) => {
   console.log(data);
   userInfo.setUserInfo(data);
@@ -73,15 +90,19 @@ popupWithFormProfile.setEventListeners();
 buttonEditProfile.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
   popupWithFormProfile.setInputValues(userData);
-
-  // nameInput.value = userData.name;
-  // jobInput.value = userData.info;
   console.log(userInfo.getUserInfo());
-  console.log(nameInput.value);
-  console.log(jobInput.value);
   popupWithFormProfile.open();
   formProfileOnValidate.resetValidation();
 });
+
+
+
+
+
+
+
+
+
 
 // Валидация инпутов
 const formCardsOnValidate = new FormValidator(settings, popupCardsForm);
@@ -95,3 +116,31 @@ buttonAddCard.addEventListener("click", () => {
   popupCardsForm.reset();
   formCardsOnValidate.resetValidation();
 });
+
+
+//создаем экземпляр класса Api
+const api = new Api("https://mesto.nomoreparties.co/v1/cohort-49");
+const cardsss = api.getInitialCards();
+console.log(api.getInitialCards());
+
+console.log(api.getProfileData());
+
+
+
+Promise.all([
+  api.getInitialCards(),
+  api.getProfileData()
+])
+.then((res) => {
+  defaultCardList.renderItems(res[0]);
+  userInfo.setUserInfo(res[1]);
+})
+
+.catch((err) => {
+  console.log(err);
+});
+
+
+
+
+
