@@ -16,12 +16,11 @@
       <img class="header__logo" src="./images/logo.svg" alt="Логотип">
     </header>
 
-
     <main class="main">
 
       
       <section class="profile">
-        <img class="profile__avatar" src="./images/Avatar_image.jpeg" alt="Портрет Кусто">
+        <img class="profile__avatar" name="avatar" src="./images/Avatar_image.jpeg" alt="Портрет Кусто">
         <div class="profile__info">
           <div class="profile__list">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -53,7 +52,7 @@
         <input type="text" name="name" value="1" placeholder="Имя" class="popup__input popup__input_field_name" 
         id="name-input" required minlength="2" maxlength="40">
         <span class="name-input-error popup__input-error"></span>
-        <input type="text" name="info" value="2" placeholder="Информация" class="popup__input popup__input_field_info" 
+        <input type="text" name="about" value="2" placeholder="Информация" class="popup__input popup__input_field_info" 
         id="info-input" required minlength="2" maxlength="200">
         <span class="info-input-error popup__input-error popup__input-error_centrate"></span>
         <button class="popup__submit-button popup__submit-button_type_profile" type="submit">Сохранить</button>
@@ -88,6 +87,34 @@
     </div>
   </div>
 
+
+
+
+  <div class="popup popup_type_accept">
+    <div class="popup__container popup__container_type_accept">
+      <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
+      <h2 class="popup__title popup__title_type_accept">Вы уверены?</h3>
+      <form class="popup__form">
+        <button class="popup__submit-button popup__submit-button_type_accept" type="submit" aria-label="Подтвердить удаление">Да</button>
+      </form>
+    </div>
+  </div>
+
+
+   <div class="popup popup_type_avatar">
+    <div class="popup__container popup__container_type_avatar">
+      <h2 class="popup__title">Обновить аватар</h3>
+      <form class="popup__form" name="popupFormAvatar" novalidate>
+        <input id="popup-avatar-input" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_avatar_link" name="link" required>
+        <span id="popup-avatar-input-error" class="popup__input-error"></span>
+        <button class="popup__submit-button" type="submit">Сохранить</button>
+      </form>
+      <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
+    </div>
+  </div>
+
+
+
   
   <template class="item_template">
     <li class="element">
@@ -95,7 +122,10 @@
       <img class="element__photo" src="#" alt="Картинка">
       <div class="element__title">
         <h2 class="element__text"></h2>
-        <button class="element__like" type="button"></button>
+        <div class="element__group">
+          <button class="element__like" type="button"></button>
+          <p class="element__sum"></p>
+        </div>
       </div>
     </li>
   </template>

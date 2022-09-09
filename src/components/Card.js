@@ -1,9 +1,23 @@
 export class Card {
-  constructor(data, templateSelector, handleCardClick) {
+  constructor(data, templateSelector, handleCardClick, handleTrashClick) {
+  //constructor(data, templateSelector, handleCardClick) {
+
     this._name = data.name;
     this._link = data.link;
+  
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._handleTrashClick = handleTrashClick;
+
+
+    // this._userId = userId;
+    // this._cardId = data._id;
+    // this._idOwner = data.owner._id;
+
+
+
+
+
   }
   // получаем разметку
   _getTemplate() {
@@ -20,6 +34,20 @@ export class Card {
     this._elementText.textContent = this._name;
     this._elementPhoto.src = this._link;
     this._elementPhoto.alt = this._name;
+
+    //отображаем кнопку "Корзина" только у карточек пользователя
+    // if (this._userId !== this._idOwner) {
+    //   this._delete.remove();
+    // }
+    
+    
+    
+    //лайки
+    
+    
+
+
+
     return this._element;
   }
 
@@ -40,15 +68,20 @@ export class Card {
     });
 
     this._elementDeleteCard.addEventListener("click", () => {
-      this._handleDeleteCard();
+    this._handleTrashClick();
     });
+
+
+    // this._elementDeleteCard.addEventListener("click", () => {
+    //   this.handleDeleteCard();
+    // });
   }
 
   _toggleLike() {
     this._likeButton.classList.toggle("element__like_active");
   }
 
-  _handleDeleteCard() {
+  handleDeleteCard() {
     this._element.remove();
   }
 }
