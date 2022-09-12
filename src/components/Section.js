@@ -9,9 +9,9 @@ export class Section {
     this._container.prepend(element);
   }
 
-  renderItems(arr) {
+  renderItems(arr, id) {
     arr.forEach((item) => {
-      this._renderer(item);
+      this._renderer(item, id);
     });
   }
 }

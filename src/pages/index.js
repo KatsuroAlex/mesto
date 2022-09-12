@@ -28,12 +28,16 @@ import {
 
 
 //////СОЗДАНИЕ первоначальных карточек и их выгрузка на страницу
-function createCard(data, id) {
+function createCard(data, userId) {
   const card = new Card(
-    { name: data.name, link: data.link }, 
-    ".item_template",
+    data,
+    //{ name: data.name, link: data.link }, 
+    //".item_template",
+    '#item_template',
     handleCardClick,
     handleTrashClick,
+    userId,
+
   );
   const newCard = card.generateCard();
   return newCard;
@@ -41,8 +45,8 @@ function createCard(data, id) {
 
 const defaultCardList = new Section(
   {
-    renderer: (item) => {
-      defaultCardList.addItem(createCard(item));
+    renderer: (item, id) => {
+      defaultCardList.addItem(createCard(item, id));
     },
   },
   ".elements__list"
@@ -50,38 +54,35 @@ const defaultCardList = new Section(
 
 
 
-function handleTrashClick() {
-  const popupWithAccept = new PopupWithAccept(popupAccept, () => {
-    
-    // function handlePopupConfirm(id, card) {
-    //   api.deleteCard(id)
-    //   .then(() => {
-    //     card.handleDeleteCard();
-    //     popupAccept.close();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-    // }
-
-  });
-  popupWithAccept.setEventListeners();
-  popupWithAccept.open();
-  
 
 
+const popupWithAccept = new PopupWithAccept(".popup_type_accept", (card) => {
+  console.log(card);
+  removeCard(card);
 
 
-  console.log("РАЗДВАТРИ")
+});
+popupWithAccept.setEventListeners();
+
+
+function handleTrashClick(card) {
+  console.log(popupWithAccept.open(card));
+  popupWithAccept.open(card);
+}
+
+const removeCard = (card) => {
+  console.log(card);
+  api.deleteCard(card._id)
+    .then(() => {
+      card.handleDeleteCard();
+      popupWithAccept.close();
+    })
+    .catch(err => console.log(`Error: ${err}`));
 }
 
 
 
 
-
-
-const popupAccept = document.querySelector(".popup_type_accept");
-const buttonDeleteCard = document.querySelector(".element__delete-card");
 
 /////Попап с подтверждением
 
@@ -149,10 +150,11 @@ const buttonDeleteCard = document.querySelector(".element__delete-card");
 
 
 // Отправка формы popupCards и добавление новой карточки
-const popupWithFormCards = new PopupWithForm(popupCards, (data) => {
+const popupWithFormCards = new PopupWithForm(".popup_type_cards", (data) => {
+  console.log(data);
   api.postNewCard(data)
-  .then((item) => {
-    defaultCardList.addItem(createCard(item));
+  .then((item, id) => {
+    defaultCardList.addItem(createCard(item, id));
     popupWithFormCards.close();
   })
   .catch((err) => {
@@ -167,13 +169,14 @@ const popupWithFormCards = new PopupWithForm(popupCards, (data) => {
 popupWithFormCards.setEventListeners();
 
 buttonAddCard.addEventListener("click", () => {
+  console.log(popupWithFormCards);
   popupWithFormCards.open();
   popupCardsForm.reset();
   formCardsOnValidate.resetValidation();
 });
 
 // открытие попапа с картинкой
-const popupWithImage = new PopupWithImage(popupPicture);
+const popupWithImage = new PopupWithImage(".popup_type_picture");
 popupWithImage.setEventListeners();
 
 function handleCardClick(name, link) {
@@ -201,7 +204,8 @@ const userInfo = new UserInfo({
   userAvatar: ".profile__avatar"
 });
 
-const popupWithFormProfile = new PopupWithForm(popupProfile, (data) => {
+//const popupWithFormProfile = new PopupWithForm(popupProfile, (data) => {
+  const popupWithFormProfile = new PopupWithForm(".popup_type_profile", (data) => {
   console.log(data);
 
   api.saveProfileInfo(data)
@@ -264,16 +268,33 @@ console.log(api.getProfileData());
 
 //console.log(userInfo.setUserInfo());
 
+// Promise.all([
+//   api.getInitialCards(),
+//   api.getProfileData()
+// ])
+// .then((res) => {
+//   defaultCardList.renderItems(res[0], res[0]._id);
+//   userInfo.setUserInfo(res[1]);
+// })
+
+// .catch((err) => {
+//   console.log(err);
+// });
+
 Promise.all([
-  api.getInitialCards(),
-  api.getProfileData()
+  api.getProfileData(),
+  api.getInitialCards()
 ])
-.then((res) => {
-  defaultCardList.renderItems(res[0]);
-  userInfo.setUserInfo(res[1]);
+.then((values) => {
+  
+  userInfo.setUserInfo(values[0]);
+  defaultCardList.renderItems(values[1], values[0]._id);
 })
 
 .catch((err) => {
   console.log(err);
 });
 
+
+// let userId = ''
+// api.getProfileData().then((res) => userId = res._id);

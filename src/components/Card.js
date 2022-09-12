@@ -1,5 +1,5 @@
 export class Card {
-  constructor(data, templateSelector, handleCardClick, handleTrashClick) {
+  constructor(data, templateSelector, handleCardClick, handleTrashClick, userId) {
   //constructor(data, templateSelector, handleCardClick) {
 
     this._name = data.name;
@@ -10,9 +10,9 @@ export class Card {
     this._handleTrashClick = handleTrashClick;
 
 
-    // this._userId = userId;
-    // this._cardId = data._id;
-    // this._idOwner = data.owner._id;
+    this._userId = userId;
+    this._cardId = data._id;
+    this._idOwner = data.owner._id;
 
 
 
@@ -35,6 +35,9 @@ export class Card {
     this._elementPhoto.src = this._link;
     this._elementPhoto.alt = this._name;
 
+
+
+    
     //отображаем кнопку "Корзина" только у карточек пользователя
     // if (this._userId !== this._idOwner) {
     //   this._delete.remove();
@@ -45,9 +48,6 @@ export class Card {
     //лайки
     
     
-
-
-
     return this._element;
   }
 
@@ -68,8 +68,19 @@ export class Card {
     });
 
     this._elementDeleteCard.addEventListener("click", () => {
-    this._handleTrashClick();
+    this._handleTrashClick(this._element);
     });
+
+
+
+
+
+    ///корзина
+    console.log(this._userId);
+    console.log(this._idOwner);
+    if (this._userId !== this._idOwner) {
+      this._elementDeleteCard.remove();
+    }
 
 
     // this._elementDeleteCard.addEventListener("click", () => {
@@ -83,5 +94,6 @@ export class Card {
 
   handleDeleteCard() {
     this._element.remove();
+    this._element = null;
   }
 }

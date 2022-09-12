@@ -95,8 +95,9 @@ export class Api {
   }
 
   ///////удаление карточки пользователя с сервера
-  deleteCard(itemId) {
-    return fetch(`${this._cardsUrl}/${itemId}`, {
+  deleteCard(id) {
+    console.log(id);
+    return fetch(`${this._cardsUrl}/${id}`, {
       method: "DELETE",
       headers: {
         authorization: "662b4a69-3985-425e-a15b-c46bfd55b560",
