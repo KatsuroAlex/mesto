@@ -9,9 +9,13 @@ export class PopupWithAccept extends Popup {
     this._card = {};
   }
 
-  // setSubmit(submit) {
-  //   this._handleSubmitAccept = submit;
-  // }
+  setSubmitAction(submit) {
+    this._handleSubmitAccept = submit;
+  }
+
+  
+
+
 
   open (card) {
     super.open();
@@ -19,11 +23,13 @@ export class PopupWithAccept extends Popup {
     return this._card = card
   }
 
+
   setEventListeners() {
     super.setEventListeners();
     this._submitButton.addEventListener("click", (evt) => {
       evt.preventDefault();
       this._handleSubmit(this._card);
+      //this._handleSubmit();
     })
 
   }

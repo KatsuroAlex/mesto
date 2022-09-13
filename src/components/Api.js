@@ -127,7 +127,7 @@ export class Api {
     });
   }
 
-  ////////удаление лайка с карточки
+  ////////удаление лайка с карточки (ПОМЕНЯТЬ ТОКЕН НА 50 КОГОРТУ)
   dislikeCard(itemId) {
     return fetch(`${this._likesUrl}/${itemId}`, {
       method: "DELETE",

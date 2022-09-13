@@ -25,9 +25,4 @@ export class UserInfo {
     console.log(data.about);
     console.log(data.avatar);
   }
-
-  
-
-
-
 }

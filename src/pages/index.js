@@ -25,8 +25,6 @@ import {
 } from "../utils/constants.js";
 
 
-
-
 //////СОЗДАНИЕ первоначальных карточек и их выгрузка на страницу
 function createCard(data, userId) {
   const card = new Card(
@@ -35,13 +33,20 @@ function createCard(data, userId) {
     //".item_template",
     '#item_template',
     handleCardClick,
-    handleTrashClick,
+    () => {
+      console.log(popupWithAccept.open(card));
+      popupWithAccept.open(card)
+    },
+    //handleTrashClick,
     userId,
 
   );
   const newCard = card.generateCard();
   return newCard;
 }
+
+
+
 
 const defaultCardList = new Section(
   {
@@ -58,27 +63,34 @@ const defaultCardList = new Section(
 
 const popupWithAccept = new PopupWithAccept(".popup_type_accept", (card) => {
   console.log(card);
-  removeCard(card);
-
+  console.log(card._cardId);
+  api.deleteCard(card._cardId)
+  .then(() => {
+    card.handleDeleteCard();
+    popupWithAccept.close();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 });
 popupWithAccept.setEventListeners();
 
 
-function handleTrashClick(card) {
-  console.log(popupWithAccept.open(card));
-  popupWithAccept.open(card);
-}
+// function handleTrashClick(card) {
+//   console.log(card);
+//   popupWithAccept.open(card);
+// }
 
-const removeCard = (card) => {
-  console.log(card);
-  api.deleteCard(card._id)
-    .then(() => {
-      card.handleDeleteCard();
-      popupWithAccept.close();
-    })
-    .catch(err => console.log(`Error: ${err}`));
-}
+// const removeCard = (card) => {
+//   console.log(card);
+//   api.deleteCard(card._id)
+//     .then((res) => {
+//       card.handleDeleteCard(res);
+//       popupWithAccept.close();
+//     })
+//     .catch(err => console.log(`Error: ${err}`));
+// }
 
 
 
@@ -286,7 +298,6 @@ Promise.all([
   api.getInitialCards()
 ])
 .then((values) => {
-  
   userInfo.setUserInfo(values[0]);
   defaultCardList.renderItems(values[1], values[0]._id);
 })
