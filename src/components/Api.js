@@ -4,7 +4,7 @@ export class Api {
     this._cardsUrl = `${this._baseUrl}/cards`;
     this._userUrl = `${this._baseUrl}/users/me`;
     this._avatarUrl = `${this._baseUrl}/users/me/avatar`;
-    this._likesUrl = `${this._baseUrl}/likes`;
+    this._likesUrl = `${this._baseUrl}/cards/cardId/likes`;
   }
 
   //////// загружаем карточки с сервера
@@ -112,8 +112,8 @@ export class Api {
   }
 
   ////////установка лайка карточке
-  likeCard(itemId) {
-    return fetch(`${this._likesUrl}/${itemId}`, {
+  setLike(cardId) {
+    return fetch(`${this._cardsUrl}/${cardId}/likes`, {
       method: "PUT",
       headers: {
         authorization: "662b4a69-3985-425e-a15b-c46bfd55b560",
@@ -128,8 +128,8 @@ export class Api {
   }
 
   ////////удаление лайка с карточки (ПОМЕНЯТЬ ТОКЕН НА 50 КОГОРТУ)
-  dislikeCard(itemId) {
-    return fetch(`${this._likesUrl}/${itemId}`, {
+  removeCard(cardId) {
+    return fetch(`${this._cardsUrl}/${cardId}/likes`, {
       method: "DELETE",
       headers: {
         authorization: "662b4a69-3985-425e-a15b-c46bfd55b560",

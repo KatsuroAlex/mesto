@@ -1,13 +1,15 @@
 export class Card {
-  constructor(data, templateSelector, handleCardClick, handleTrashClick, userId) {
+  constructor(data, templateSelector, handleCardClick, handleTrashClick, handleLikeClick, userId) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._handleTrashClick = handleTrashClick;
+    this._handleLikeClick = handleLikeClick;
     this._userId = userId;
     this._cardId = data._id;
     this._idOwner = data.owner._id;
+    this._likes = data.likes;
   }
   // получаем разметку
   _getTemplate() {
@@ -24,21 +26,15 @@ export class Card {
     this._elementText.textContent = this._name;
     this._elementPhoto.src = this._link;
     this._elementPhoto.alt = this._name;
-
-
     ///корзина
     if(!(this._idOwner === this._userId)){this._elementDeleteCard.remove()};
+
     
-    //отображаем кнопку "Корзина" только у карточек пользователя
-    // if (this._userId !== this._idOwner) {
-    //   this._delete.remove();
-    // }
-    
-    
-    
-    //лайки
-    
-    
+
+
+
+
+
     return this._element;
   }
 
@@ -56,13 +52,16 @@ export class Card {
 
     this._likeButton.addEventListener("click", () => {
       this._toggleLike();
+      this._handleLikeClick();
     });
 
     this._elementDeleteCard.addEventListener("click", () => {
       this._handleTrashClick();
     });
-    // ///корзина
-    // if(!(this._idOwner === this._userId)){this._elementDeleteCard.remove()};
+
+
+
+
   }
 
   _toggleLike() {
@@ -73,4 +72,12 @@ export class Card {
     this._element.remove();
     this._element = null;
   }
+
+  likeCounter() {
+
+  }
+
+
+
+
 }
