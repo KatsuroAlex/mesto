@@ -9,9 +9,9 @@ export class PopupWithAccept extends Popup {
     this._card = {};
   }
 
-  setSubmitAction(submit) {
-    this._handleSubmitAccept = submit;
-  }
+  // setSubmitAction(submit) {
+  //   this._handleSubmitAccept = submit;
+  // }
 
   
 

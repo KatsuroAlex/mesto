@@ -1,0 +1,8 @@
+.profile__edit-group{
+  position: relative;
+}
+
+
+.profile__edit-group:hover .profile__edit-button{
+  display: block;
+}

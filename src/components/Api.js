@@ -128,7 +128,7 @@ export class Api {
   }
 
   ////////удаление лайка с карточки (ПОМЕНЯТЬ ТОКЕН НА 50 КОГОРТУ)
-  removeCard(cardId) {
+  removeLike(cardId) {
     return fetch(`${this._cardsUrl}/${cardId}/likes`, {
       method: "DELETE",
       headers: {

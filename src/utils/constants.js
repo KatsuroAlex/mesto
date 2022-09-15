@@ -43,6 +43,7 @@ const popupCardsForm = document.querySelector(".popup__form_type_cards");
 const popupProfileForm = document.querySelector(".popup__form_profile");
 const nameInput = popupProfileForm.querySelector(".popup__input_field_name");
 const jobInput = popupProfileForm.querySelector(".popup__input_field_info");
+const popupChangeAvatarForm = document.querySelector(".popup__form_type_avatar");
 
 export {
   popupProfile,
@@ -54,4 +55,5 @@ export {
   popupProfileForm,
   nameInput,
   jobInput,
+  popupChangeAvatarForm,
 };

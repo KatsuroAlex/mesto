@@ -22,31 +22,61 @@ import {
   popupProfileForm,
   nameInput,
   jobInput,
+  popupChangeAvatarForm,
 } from "../utils/constants.js";
+
+
+
+
 
 
 //////СОЗДАНИЕ первоначальных карточек и их выгрузка на страницу
 function createCard(data, userId) {
   const card = new Card(
     data,
-    //{ name: data.name, link: data.link }, 
-    //".item_template",
     '#item_template',
     handleCardClick,
     () => {
       console.log(popupWithAccept.open(card));
       popupWithAccept.open(card)
     },
-    (evt) => {
-      if (!evt.target.classList.contains('element__like_active')){
-        addLike(card)
-      }
-      else{
-        removeLike(card)
+    ///лайки
+
+    (id, isLiked, card) => {
+      if (isLiked) {
+        //отправляем запрос снятия лайка
+        api.removeLike(id)
+        .then((data) => {
+          card.setLikes(data.likes);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      } else {
+        //отправляем запрос на установку лайка
+        api.setLike(id)
+        .then((data) => {
+          card.setLikes(data.likes);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       }
     },
-    userId,
 
+
+
+    // (evt) => {
+    //   if (!evt.target.classList.contains('element__like_active')){
+    //     addLike(card)
+    //   }
+    //   else{
+    //     removeLike(card)
+    //   }
+    // },
+
+
+    userId,
   );
   const newCard = card.generateCard();
   return newCard;
@@ -54,8 +84,8 @@ function createCard(data, userId) {
 
 const defaultCardList = new Section(
   {
-    renderer: (item, id) => {
-      defaultCardList.addItem(createCard(item, id));
+    renderer: (item, userId) => {
+      defaultCardList.addItem(createCard(item, userId));
     },
   },
   ".elements__list"
@@ -63,12 +93,46 @@ const defaultCardList = new Section(
 
 /////ЛАЙКИ
 
-// addLike(card) {
+// function addLike(card) {
 //   api.setLike(card._cardId)
-//   then((res) => {
-
+//   .then((res) => {
+//     card.likeCounter(res.likes.length)
 //   })
+//   .catch(err => console.log(`Error: ${err}`))
 // }
+
+// function removeLike(card) {
+//   api.deleteLike(card._id)
+//     .then((res) => {
+//       card.likeCounter(res.likes.length)
+//     })
+//     .catch(err => console.log(`Error: ${err}`));
+// }
+
+
+////Попап c аватаром
+const buttonOpenPopupAvatar = document.querySelector('.profile__edit-button');
+const popupAvatar = new PopupWithForm(".popup_type_avatar", (data) => {
+  console.log(data);
+  api.saveProfileAvatar(data)
+  .then((data) => {
+    userInfo.setUserInfo(data);
+    popupAvatar.close();
+    formAvatarOnValidate.resetValidation();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+});
+popupAvatar.setEventListeners();
+
+buttonOpenPopupAvatar.addEventListener('click', () => {
+  popupAvatar.open()
+})
+
+
+
+
 
 
 
@@ -99,8 +163,10 @@ popupWithAccept.setEventListeners();
 const popupWithFormCards = new PopupWithForm(".popup_type_cards", (data) => {
   console.log(data);
   api.postNewCard(data)
-  .then((item, id) => {
-    defaultCardList.addItem(createCard(item, id));
+  .then((data) => {
+    defaultCardList.addItem(createCard(data, data.owner._id));
+    console.log(data);
+    console.log(data.owner.id)
     popupWithFormCards.close();
   })
   .catch((err) => {
@@ -189,6 +255,10 @@ formCardsOnValidate.enableValidation();
 const formProfileOnValidate = new FormValidator(settings, popupProfileForm);
 formProfileOnValidate.enableValidation();
 
+const formAvatarOnValidate = new FormValidator(settings, popupChangeAvatarForm);
+formAvatarOnValidate.enableValidation();
+
+
 
 ///API
 const api = new Api("https://mesto.nomoreparties.co/v1/cohort-49");
@@ -200,7 +270,9 @@ Promise.all([
   api.getInitialCards()
 ])
 .then((values) => {
+  console.log(values[0]._id);
   userInfo.setUserInfo(values[0]);
+  console.log(values[1]);
   defaultCardList.renderItems(values[1], values[0]._id);
 })
 
@@ -210,4 +282,10 @@ Promise.all([
 
 
 // let userId = ''
-// api.getProfileData().then((res) => userId = res._id);
+
+
+// api.getProfileData()
+// .then((userData) => {
+//   userId = userData._id;
+// });
+// console.log(userId)
