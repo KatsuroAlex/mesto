@@ -26,10 +26,6 @@ import {
 } from "../utils/constants.js";
 
 
-
-
-
-
 //////СОЗДАНИЕ первоначальных карточек и их выгрузка на страницу
 function createCard(data, userId) {
   const card = new Card(
@@ -44,7 +40,7 @@ function createCard(data, userId) {
 
     (id, isLiked, card) => {
       if (isLiked) {
-        //отправляем запрос снятия лайка
+        //отправляем запрос на снятие лайка
         api.removeLike(id)
         .then((data) => {
           card.setLikes(data.likes);
@@ -63,19 +59,6 @@ function createCard(data, userId) {
         });
       }
     },
-
-
-
-    // (evt) => {
-    //   if (!evt.target.classList.contains('element__like_active')){
-    //     addLike(card)
-    //   }
-    //   else{
-    //     removeLike(card)
-    //   }
-    // },
-
-
     userId,
   );
   const newCard = card.generateCard();
@@ -91,28 +74,10 @@ const defaultCardList = new Section(
   ".elements__list"
 );
 
-/////ЛАЙКИ
-
-// function addLike(card) {
-//   api.setLike(card._cardId)
-//   .then((res) => {
-//     card.likeCounter(res.likes.length)
-//   })
-//   .catch(err => console.log(`Error: ${err}`))
-// }
-
-// function removeLike(card) {
-//   api.deleteLike(card._id)
-//     .then((res) => {
-//       card.likeCounter(res.likes.length)
-//     })
-//     .catch(err => console.log(`Error: ${err}`));
-// }
-
-
 ////Попап c аватаром
 const buttonOpenPopupAvatar = document.querySelector('.profile__edit-button');
 const popupAvatar = new PopupWithForm(".popup_type_avatar", (data) => {
+  popupAvatar.saveProgress(true);
   console.log(data);
   api.saveProfileAvatar(data)
   .then((data) => {
@@ -123,23 +88,13 @@ const popupAvatar = new PopupWithForm(".popup_type_avatar", (data) => {
   .catch((err) => {
     console.log(err);
   });
+  
 });
 popupAvatar.setEventListeners();
 
 buttonOpenPopupAvatar.addEventListener('click', () => {
   popupAvatar.open()
 })
-
-
-
-
-
-
-
-
-
-
-
 
 
 ////Удаление карточки popupCards
@@ -153,14 +108,17 @@ const popupWithAccept = new PopupWithAccept(".popup_type_accept", (card) => {
   })
   .catch((err) => {
     console.log(err);
-  });
-
+  })
+  .finally(() => {
+    popupWithAccept.saveProgress(false);
+  })
 });
 popupWithAccept.setEventListeners();
 
 
 // Отправка формы popupCards и добавление новой карточки
 const popupWithFormCards = new PopupWithForm(".popup_type_cards", (data) => {
+  popupWithFormCards.saveProgress(true);
   console.log(data);
   api.postNewCard(data)
   .then((data) => {
@@ -172,11 +130,11 @@ const popupWithFormCards = new PopupWithForm(".popup_type_cards", (data) => {
   .catch((err) => {
     console.log(err);
   })
+  .finally(() => {
+    popupWithFormCards.saveProgress(false);
+  })
 });
 popupWithFormCards.setEventListeners();
-
-
-
 
 
 buttonAddCard.addEventListener("click", () => {
@@ -197,20 +155,6 @@ function handleCardClick(name, link) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Функционал popupProfile по добавлению текста пользователя
 const userInfo = new UserInfo({
   userName: ".profile__title",
@@ -219,6 +163,7 @@ const userInfo = new UserInfo({
 });
 
 const popupWithFormProfile = new PopupWithForm(".popup_type_profile", (data) => {
+  popupWithFormProfile.saveProgress(true);
   console.log(data);
   api.saveProfileInfo(data)
   .then((item) => {
@@ -228,6 +173,9 @@ const popupWithFormProfile = new PopupWithForm(".popup_type_profile", (data) => 
   })
   .catch((err) => {
     console.log(err);
+  })
+  .finally(() => {
+    popupWithFormProfile.saveProgress(false);
   })
 });
 popupWithFormProfile.setEventListeners();
