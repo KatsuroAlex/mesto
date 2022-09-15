@@ -48,21 +48,21 @@ export class Card {
     this._setEventListeners();
 
     ///лайки
-    this.setLikes(this._likes);
+    this.setupLikes(this._likes);
     return this._element;
   }
 
-  _checkLike() {
+  _checkForLike() {
     return this._likes.some((like) => {
       return like._id === this._userId;
     });
   }
 
   //метод принимает данные лайков карточки и обновляет отображение карточки
-  setLikes(arr) {
+  setupLikes(arr) {
     this._element.querySelector(".element__sum").textContent = arr.length;
     this._likes = arr;
-    if (this._checkLike()) {
+    if (this._checkForLike()) {
       this._like.classList.add("element__like_active");
     } else {
       this._like.classList.remove("element__like_active");
@@ -79,7 +79,7 @@ export class Card {
     });
 
     this._like.addEventListener("click", () => {
-      this._handleLikeClick(this._cardId, this._checkLike(), this);
+      this._handleLikeClick(this._cardId, this._checkForLike(), this);
     });
   }
 

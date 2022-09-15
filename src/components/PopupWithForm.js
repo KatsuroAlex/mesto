@@ -37,7 +37,7 @@ export class PopupWithForm extends Popup {
     this._popupForm.reset();
   }
 
-  saveProgress(inLoad) {
+  savingProgress(inLoad) {
     if (inLoad) {
       this._buttonSave.textContent = `Cохранение...`;
     } else {

@@ -35,7 +35,7 @@ function createCard(data, userId) {
         api
           .removeLike(id)
           .then((data) => {
-            card.setLikes(data.likes);
+            card.setupLikes(data.likes);
           })
           .catch((err) => {
             console.log(err);
@@ -45,7 +45,7 @@ function createCard(data, userId) {
         api
           .setLike(id)
           .then((data) => {
-            card.setLikes(data.likes);
+            card.setupLikes(data.likes);
           })
           .catch((err) => {
             console.log(err);
@@ -70,7 +70,7 @@ const defaultCardList = new Section(
 ////Попап c аватаром
 const buttonOpenPopupAvatar = document.querySelector(".profile__edit-button");
 const popupAvatar = new PopupWithForm(".popup_type_avatar", (data) => {
-  popupAvatar.saveProgress(true);
+  popupAvatar.savingProgress(true);
   console.log(data);
   api
     .saveProfileAvatar(data)
@@ -103,14 +103,14 @@ const popupWithAccept = new PopupWithAccept(".popup_type_accept", (card) => {
       console.log(err);
     })
     .finally(() => {
-      popupWithAccept.saveProgress(false);
+      popupWithAccept.savingProgress(false);
     });
 });
 popupWithAccept.setEventListeners();
 
 // Отправка формы popupCards и добавление новой карточки
 const popupWithFormCards = new PopupWithForm(".popup_type_cards", (data) => {
-  popupWithFormCards.saveProgress(true);
+  popupWithFormCards.savingProgress(true);
   console.log(data);
   api
     .postNewCard(data)
@@ -124,7 +124,7 @@ const popupWithFormCards = new PopupWithForm(".popup_type_cards", (data) => {
       console.log(err);
     })
     .finally(() => {
-      popupWithFormCards.saveProgress(false);
+      popupWithFormCards.savingProgress(false);
     });
 });
 popupWithFormCards.setEventListeners();
@@ -154,7 +154,7 @@ const userInfo = new UserInfo({
 const popupWithFormProfile = new PopupWithForm(
   ".popup_type_profile",
   (data) => {
-    popupWithFormProfile.saveProgress(true);
+    popupWithFormProfile.savingProgress(true);
     console.log(data);
     api
       .saveProfileInfo(data)
@@ -167,7 +167,7 @@ const popupWithFormProfile = new PopupWithForm(
         console.log(err);
       })
       .finally(() => {
-        popupWithFormProfile.saveProgress(false);
+        popupWithFormProfile.savingProgress(false);
       });
   }
 );
