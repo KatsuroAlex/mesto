@@ -11,7 +11,7 @@ export class Api {
   getInitialCards() {
     return fetch(this._cardsUrl, {
       headers: {
-        authorization: "662b4a69-3985-425e-a15b-c46bfd55b560",
+        authorization: "0cd386ae-1830-42e7-aefa-1c5dfe1b78a1",
       },
     }).then((res) => {
       if (res.ok) {
@@ -25,7 +25,7 @@ export class Api {
   getProfileData() {
     return fetch(this._userUrl, {
       headers: {
-        authorization: "662b4a69-3985-425e-a15b-c46bfd55b560",
+        authorization: "0cd386ae-1830-42e7-aefa-1c5dfe1b78a1",
       },
     }).then((res) => {
       if (res.ok) {
@@ -40,7 +40,7 @@ export class Api {
     return fetch(this._userUrl, {
       method: "PATCH",
       headers: {
-        authorization: "662b4a69-3985-425e-a15b-c46bfd55b560",
+        authorization: "0cd386ae-1830-42e7-aefa-1c5dfe1b78a1",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -60,7 +60,7 @@ export class Api {
     return fetch(this._avatarUrl, {
       method: "PATCH",
       headers: {
-        authorization: "662b4a69-3985-425e-a15b-c46bfd55b560",
+        authorization: "0cd386ae-1830-42e7-aefa-1c5dfe1b78a1",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -79,7 +79,7 @@ export class Api {
     return fetch(this._cardsUrl, {
       method: "POST",
       headers: {
-        authorization: "662b4a69-3985-425e-a15b-c46bfd55b560",
+        authorization: "0cd386ae-1830-42e7-aefa-1c5dfe1b78a1",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -100,7 +100,7 @@ export class Api {
     return fetch(`${this._cardsUrl}/${id}`, {
       method: "DELETE",
       headers: {
-        authorization: "662b4a69-3985-425e-a15b-c46bfd55b560",
+        authorization: "0cd386ae-1830-42e7-aefa-1c5dfe1b78a1",
         "Content-Type": "application/json",
       },
     }).then((res) => {
@@ -116,7 +116,7 @@ export class Api {
     return fetch(`${this._cardsUrl}/${cardId}/likes`, {
       method: "PUT",
       headers: {
-        authorization: "662b4a69-3985-425e-a15b-c46bfd55b560",
+        authorization: "0cd386ae-1830-42e7-aefa-1c5dfe1b78a1",
         "Content-Type": "application/json",
       },
     }).then((res) => {
@@ -132,7 +132,7 @@ export class Api {
     return fetch(`${this._cardsUrl}/${cardId}/likes`, {
       method: "DELETE",
       headers: {
-        authorization: "662b4a69-3985-425e-a15b-c46bfd55b560",
+        authorization: "0cd386ae-1830-42e7-aefa-1c5dfe1b78a1",
         "Content-Type": "application/json",
       },
     }).then((res) => {

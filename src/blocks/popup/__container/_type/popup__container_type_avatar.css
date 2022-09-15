@@ -1,3 +1,4 @@
 .popup__container_type_avatar {
-  height: auto;
+  min-height: auto;
+  height: 206px;
 }
