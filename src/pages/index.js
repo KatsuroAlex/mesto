@@ -81,6 +81,9 @@ const popupAvatar = new PopupWithForm(".popup_type_avatar", (data) => {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      popupAvatar.savingProgress(false);
     });
 });
 popupAvatar.setEventListeners();
@@ -101,9 +104,6 @@ const popupWithAccept = new PopupWithAccept(".popup_type_accept", (card) => {
     })
     .catch((err) => {
       console.log(err);
-    })
-    .finally(() => {
-      popupWithAccept.savingProgress(false);
     });
 });
 popupWithAccept.setEventListeners();
@@ -193,9 +193,13 @@ const formAvatarOnValidate = new FormValidator(settings, popupChangeAvatarForm);
 formAvatarOnValidate.enableValidation();
 
 ///API
-const api = new Api("https://mesto.nomoreparties.co/v1/cohort-50");
-console.log(api.getInitialCards());
-console.log(api.getProfileData());
+const api = new Api({
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-50",
+  headers: {
+    authorization: "0cd386ae-1830-42e7-aefa-1c5dfe1b78a1",
+    "Content-Type": "application/json",
+  },
+});
 
 Promise.all([api.getProfileData(), api.getInitialCards()])
   .then((values) => {
@@ -204,7 +208,6 @@ Promise.all([api.getProfileData(), api.getInitialCards()])
     console.log(values[1]);
     defaultCardList.renderItems(values[1], values[0]._id);
   })
-
   .catch((err) => {
     console.log(err);
   });
